@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 {% load i18n %}
+{% load markdown_filter %}
 
 {% block content %}
 <div>
 {{ object.description_short }} <br/>
 <img src="{{ object.image.medium.url }}" /><br/>
-{{ object.description }}<br/>
+
+{{ object.description|markdown_filter|safe }}<br/>
+
 <h2>Copyrights</h2>
 {% if object.photo_copyright %}
 Photo by: <br/>
