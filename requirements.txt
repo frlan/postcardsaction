@@ -1,0 +1,17 @@
+bleach==3.1.0
+Django==2.2.7
+django-markdown-app==0.9.6
+django-markdown-filter==0.0.1
+django-stdimage==5.0.1
+django-tagulous==0.14.1
+Markdown==3.1.1
+markdown2==2.3.8
+Pillow==6.2.1
+pkg-resources==0.0.0
+progressbar2==3.47.0
+python-utils==2.3.0
+pytz==2019.3
+six==1.13.0
+sqlparse==0.3.0
+Unidecode==1.1.1
+webencodings==0.5.1
