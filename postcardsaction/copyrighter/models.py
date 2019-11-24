@@ -25,4 +25,7 @@ class Copyright(models.Model):
     )
 
     def __str__(self):
-        return "{} ({})".format(self.holder, self.licence)
+        if self.licence:
+            return "{} ({})".format(self.holder, self.licence)
+        else:
+            return "{}".format(self.holder)
