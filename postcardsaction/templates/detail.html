@@ -9,16 +9,16 @@
 {{ object.description }}<br/>
 <h2>Copyrights</h2>
 {% if object.photo_copyright %}
-Photo by:
+Photo by: <br/>
 	{% for p in  object.photo_copyright.all %}
-		{{ p }}
+		{{ p }} <br/>
 	{% endfor %}
 	<br/>
 {% endif %}
 {% if object.print_copyright %}
-Printed/published by:
+Printed/published by:<br/>
 	{% for p in  object.print_copyright.all %}
-		{{ p }}
+		{{ p }} <br/>
 	{% endfor %}
 	<br/>
 {% endif %}
