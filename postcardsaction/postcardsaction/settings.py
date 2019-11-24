@@ -31,18 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "copyrighter",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sessions",
     "django.contrib.staticfiles",
     "django_markdown",
+    'markdown_filter',
     "postcard",
     "stdimage",
     "tagulous",
-    "copyrighter",
-    'markdown_filter',
 ]
 
 MIDDLEWARE = [
