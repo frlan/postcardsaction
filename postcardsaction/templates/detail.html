@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div>
+{{ object.description_short }} <br/>
+<img src="{{ object.image.medium.url }}" /><br/>
+{{ object.description }}<br/>
+{% for tag in object.tags.all %}
+{{ tag.name }}
+{% endfor %}
+
+</div>
+<a href="{% url "index" %}">Home</a>
+{% endblock %}

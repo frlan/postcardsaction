@@ -1,0 +1,12 @@
+<!DOCTYPE html>{% load staticfiles %}{% load static %}{% load i18n %}
+<html lang={% trans "en" %}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="postcardsaction" />
+    {% block stylesheets %}{% endblock %}
+    <title>{% block head_title %}Start{% endblock %}</title>
+  </head>
+  <body>
+    {% block content %}Empty page{% endblock %}
+  </body>
+</html>
