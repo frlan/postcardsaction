@@ -7,6 +7,23 @@
 {{ object.description_short }} <br/>
 <img src="{{ object.image.medium.url }}" /><br/>
 {{ object.description }}<br/>
+<h2>Copyrights</h2>
+{% if object.photo_copyright %}
+Photo by:
+	{% for p in  object.photo_copyright.all %}
+		{{ p }}
+	{% endfor %}
+	<br/>
+{% endif %}
+{% if object.print_copyright %}
+Printed/published by:
+	{% for p in  object.print_copyright.all %}
+		{{ p }}
+	{% endfor %}
+	<br/>
+{% endif %}
+
+<h2>Tags</h2>
 {% for tag in object.tags.all %}
 {{ tag.name }}
 {% endfor %}
