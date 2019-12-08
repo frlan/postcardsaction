@@ -14,3 +14,6 @@ class PCPostCard(models.Model):
         help_text="The Key at poscrossing", max_length=100, unique=True
     )
     user = models.ManyToManyField(PCUser)
+
+    def __str__(self):
+        return (self.pc_id)
