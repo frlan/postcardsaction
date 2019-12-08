@@ -38,6 +38,7 @@ from stdimage import StdImageField, JPEGField
 import datetime
 import tagulous.models
 from copyrighter.models import Copyright
+from postcrossing.models import PCPostCard
 
 
 class Tag(tagulous.models.TagTreeModel):
@@ -79,3 +80,6 @@ class Postcard(models.Model):
     tags = tagulous.models.TagField(to=Tag)
     photo_copyright = models.ManyToManyField(Copyright, related_name="photo")
     print_copyright = models.ManyToManyField(Copyright, related_name="print")
+    postcrossing = models.ForeignKey(
+        PCPostCard, on_delete=models.CASCADE, null=True, blank=True
+    )

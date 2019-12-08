@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.staticfiles",
     "django_markdown",
-    'markdown_filter',
+    "markdown_filter",
     "postcard",
     "stdimage",
     "tagulous",
+    "postcrossing",
 ]
 
 MIDDLEWARE = [
@@ -143,9 +144,4 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/all"),)
 
 MARKDOWN_EDITOR_SKIN = "simple"
 
-MARKDOWN_FILTER_WHITELIST_TAGS = [
-'a',
-'p',
-'code',
-'h1',
-]
+MARKDOWN_FILTER_WHITELIST_TAGS = ["a", "p", "code", "h1"]
