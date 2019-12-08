@@ -83,3 +83,6 @@ class Postcard(models.Model):
     postcrossing = models.ForeignKey(
         PCPostCard, on_delete=models.CASCADE, null=True, blank=True
     )
+
+    def __str__(self):
+        return self.description_short
