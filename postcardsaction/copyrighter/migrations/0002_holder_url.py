@@ -5,14 +5,10 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('copyrighter', '0001_initial'),
-    ]
+    dependencies = [("copyrighter", "0001_initial")]
 
     operations = [
         migrations.AddField(
-            model_name='holder',
-            name='url',
-            field=models.URLField(blank=True),
-        ),
+            model_name="holder", name="url", field=models.URLField(blank=True)
+        )
     ]
