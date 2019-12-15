@@ -8,6 +8,9 @@ class PCUser(models.Model):
         max_length=100,
     )
 
+    def __str__(self):
+        return self.username
+
 
 class PCPostCard(models.Model):
     pc_id = models.CharField(
