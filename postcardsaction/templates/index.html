@@ -5,7 +5,11 @@
 {% block content %}
 <div style="margin=20px;">
 {% for item in object_list %}
+    <div>
+    <h2>{{ item.description_short }}</h2>
+    <p>Received: {{ item.year_recieved}} </p>
     <a href="{% url "postcard_detail" item.id %}"><img src="{{ item.image.thumbnail.url }}"/></a>
+    </div>
 {% endfor %}
 </div>
 {% if tags %}
