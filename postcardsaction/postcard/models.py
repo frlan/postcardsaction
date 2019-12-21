@@ -79,9 +79,7 @@ class Postcard(models.Model):
     )
     tags = tagulous.models.TagField(to=Tag)
     photo_copyright = models.ManyToManyField(Copyright, related_name="photo")
-    print_copyright = models.ManyToManyField(
-        Copyright,
-        related_name="print")
+    print_copyright = models.ManyToManyField(Copyright, related_name="print")
     postcrossing = models.ForeignKey(
         PCPostCard, on_delete=models.CASCADE, null=True, blank=True
     )
@@ -90,4 +88,4 @@ class Postcard(models.Model):
         return self.description_short
 
     class Meta:
-        ordering = ['-id']
+        ordering = ["-id"]

@@ -5,9 +5,9 @@ from .models import PCUser
 
 @admin.register(PCPostCard)
 class PCPostCardAdmin(admin.ModelAdmin):
-    list_display = ["id",]
+    list_display = ["id"]
+
 
 @admin.register(PCUser)
 class PCUserAdmin(admin.ModelAdmin):
-    list_display = ["username",]
-
+    list_display = ["username"]

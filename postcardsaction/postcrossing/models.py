@@ -19,4 +19,4 @@ class PCPostCard(models.Model):
     user = models.ManyToManyField(PCUser)
 
     def __str__(self):
-        return (self.pc_id)
+        return self.pc_id

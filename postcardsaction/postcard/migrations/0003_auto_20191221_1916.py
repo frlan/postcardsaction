@@ -5,13 +5,10 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('postcard', '0002_postcard_postcrossing'),
-    ]
+    dependencies = [("postcard", "0002_postcard_postcrossing")]
 
     operations = [
         migrations.AlterModelOptions(
-            name='postcard',
-            options={'ordering': ['-id']},
-        ),
+            name="postcard", options={"ordering": ["-id"]}
+        )
     ]
