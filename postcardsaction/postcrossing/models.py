@@ -20,3 +20,10 @@ class PCPostCard(models.Model):
 
     def __str__(self):
         return self.pc_id
+
+    @property
+    def url(self):
+        """
+        Returns URL for a postcrossing postcard
+        """
+        return("https://www.postcrossing.com/postcards/{}".format(self.pc_id))

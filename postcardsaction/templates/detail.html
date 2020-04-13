@@ -25,6 +25,10 @@ Printed/published by:<br/>
 	{% endfor %}
 	<br/>
 {% endif %}
+{% if object.postcrossing %}
+Postcrossing: <br/>
+	<a href="{{object.postcrossing.url}}">{{object.postcrossing.pc_id}}</a>
+{% endif %}
 
 <h2>Tags</h2>
 {% for tag in object.tags.all %}
