@@ -6,23 +6,28 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('postcrossing', '0001_initial'),
-    ]
+    dependencies = [("postcrossing", "0001_initial")]
 
     operations = [
-        migrations.RemoveField(
-            model_name='pcpostcard',
-            name='user',
+        migrations.RemoveField(model_name="pcpostcard", name="user"),
+        migrations.AddField(
+            model_name="pcpostcard",
+            name="from_user",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="from_user",
+                to="postcrossing.PCUser",
+            ),
         ),
         migrations.AddField(
-            model_name='pcpostcard',
-            name='from_user',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='from_user', to='postcrossing.PCUser'),
-        ),
-        migrations.AddField(
-            model_name='pcpostcard',
-            name='to_user',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='to_user', to='postcrossing.PCUser'),
+            model_name="pcpostcard",
+            name="to_user",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="to_user",
+                to="postcrossing.PCUser",
+            ),
         ),
     ]

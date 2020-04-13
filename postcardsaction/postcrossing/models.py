@@ -17,15 +17,11 @@ class PCPostCard(models.Model):
         help_text="The Key at poscrossing", max_length=100, unique=True
     )
     from_user = models.ForeignKey(
-        PCUser,
-        on_delete=models.SET_NULL,
-        related_name="from_user",
-        null=True)
+        PCUser, on_delete=models.SET_NULL, related_name="from_user", null=True
+    )
     to_user = models.ForeignKey(
-        PCUser,
-        on_delete=models.SET_NULL,
-        related_name="to_user",
-        null=True)
+        PCUser, on_delete=models.SET_NULL, related_name="to_user", null=True
+    )
 
     def __str__(self):
         return self.pc_id
@@ -35,4 +31,4 @@ class PCPostCard(models.Model):
         """
         Returns URL for a postcrossing postcard
         """
-        return("https://www.postcrossing.com/postcards/{}".format(self.pc_id))
+        return "https://www.postcrossing.com/postcards/{}".format(self.pc_id)
