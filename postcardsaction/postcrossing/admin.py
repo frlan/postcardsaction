@@ -5,7 +5,7 @@ from .models import PCUser
 
 @admin.register(PCPostCard)
 class PCPostCardAdmin(admin.ModelAdmin):
-    list_display = ["id"]
+    list_display = ["pc_id", "id", "from_user"]
 
 
 @admin.register(PCUser)
