@@ -1,12 +1,10 @@
 {% extends "base.html" %}
+{% load i18n %}{% load markdown_filter %}{% load hitcount_tags %}
 
-{% load i18n %}
-{% load markdown_filter %}
-{% load hitcount_tags %}
-
+{% block head_title %} {{ object.description_short }} {% endblock %}
 {% block content %}
-<div>
 
+<div>
 <h1>{{ object.description_short }}</h1>
 
 <img src="{{ object.image.medium.url }}" /><br/>
