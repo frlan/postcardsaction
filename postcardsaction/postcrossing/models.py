@@ -16,7 +16,16 @@ class PCPostCard(models.Model):
     pc_id = models.CharField(
         help_text="The Key at poscrossing", max_length=100, unique=True
     )
-    user = models.ManyToManyField(PCUser)
+    from_user = models.ForeignKey(
+        PCUser,
+        on_delete=models.SET_NULL,
+        related_name="from_user",
+        null=True)
+    to_user = models.ForeignKey(
+        PCUser,
+        on_delete=models.SET_NULL,
+        related_name="to_user",
+        null=True)
 
     def __str__(self):
         return self.pc_id
