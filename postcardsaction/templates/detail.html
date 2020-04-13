@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load markdown_filter %}
+{% load hitcount_tags %}
 
 {% block content %}
 <div>
@@ -38,6 +39,9 @@ Postcrossing: <br/>
 {{ tag.name }}
 {% endfor %}
 
-</div>
+<h2>Statistics</h2>
+
+Viess: {{ hitcount.total_hits }} <br \><br \>
+
 <a href="{% url "index" %}">Home</a>
 {% endblock %}

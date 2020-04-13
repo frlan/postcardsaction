@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "stdimage",
     "tagulous",
     "postcrossing",
+    "hitcount",
 ]
 
 MIDDLEWARE = [

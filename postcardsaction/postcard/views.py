@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Postcard
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
+from hitcount.views import HitCountDetailView
 
 
 class IndexView(ListView):
@@ -14,6 +15,7 @@ class IndexView(ListView):
         return context
 
 
-class PostcardDetailView(DetailView):
+class PostcardDetailView(HitCountDetailView):
+    count_hit = True
     template_name = "detail.html"
     model = Postcard
