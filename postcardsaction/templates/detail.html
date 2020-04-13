@@ -25,7 +25,10 @@ Printed/published by:<br/>
 	{% endfor %}
 	<br/>
 {% endif %}
+
+
 {% if object.postcrossing %}
+<h2>Postcrossing</h2>
 Postcrossing: <br/>
 	<a href="{{object.postcrossing.url}}">{{object.postcrossing.pc_id}}</a>
 {% endif %}
