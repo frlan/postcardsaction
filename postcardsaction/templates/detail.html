@@ -39,6 +39,12 @@ Postcrossing: <br/>
 {{ tag.name }}
 {% endfor %}
 
+<h2>More information</h2>
+
+{% for url in object.urls.all %}
+<strong>URL: </strong><a href="{{url.url}}">{{ url.title }}</a>
+{% endfor %}
+
 <h2>Statistics</h2>
 
 Viess: {{ hitcount.total_hits }} <br \><br \>

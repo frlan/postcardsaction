@@ -45,8 +45,19 @@ class Tag(tagulous.models.TagTreeModel):
     class TagMeta:
         force_lowercase = False
 
+class URL(models.Model):
+
+    title = models.CharField(
+        max_length=100,
+        help_text="A short description/title of the URL",)
+    url = models.URLField(max_length=250)
+    tags = tagulous.models.TagField(to=Tag)
+
+    def __str__(self):
+        return self.title
 
 class Postcard(models.Model):
+
     description_short = models.CharField(
         max_length=100,
         help_text="Short description of the card may be used as a teaser",
@@ -83,6 +94,7 @@ class Postcard(models.Model):
     postcrossing = models.ForeignKey(
         PCPostCard, on_delete=models.CASCADE, null=True, blank=True
     )
+    urls = models.ManyToManyField(URL, related_name="further_information")
 
     def __str__(self):
         return self.description_short
