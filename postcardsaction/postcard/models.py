@@ -45,13 +45,17 @@ class Tag(tagulous.models.TagTreeModel):
     class TagMeta:
         force_lowercase = False
 
+class URLTag(tagulous.models.TagTreeModel):
+    class TagMeta:
+        force_lowercase = False
+
 class URL(models.Model):
 
     title = models.CharField(
         max_length=100,
         help_text="A short description/title of the URL",)
     url = models.URLField(max_length=250)
-    tags = tagulous.models.TagField(to=Tag)
+    tags = tagulous.models.TagField(to=URLTag)
 
     def __str__(self):
         return self.title
