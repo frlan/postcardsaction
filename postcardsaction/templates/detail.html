@@ -39,11 +39,14 @@ Postcrossing: <br/>
 {{ tag.name }}
 {% endfor %}
 
+{% if object.urls.all %}
 <h2>More information</h2>
-
+<ul>
 {% for url in object.urls.all %}
-<strong>URL: </strong><a href="{{url.url}}">{{ url.title }}</a>
+<li><strong>URL: </strong><a href="{{url.url}}">{{ url.title }}</a></li>
 {% endfor %}
+</ul>
+{% endif %}
 
 <h2>Statistics</h2>
 
