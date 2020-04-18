@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcrossing', '0002_auto_20200413_1714'),
+        ("postcrossing", "0002_auto_20200413_1714"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='pcpostcard',
-            name='pc_id',
-            field=models.CharField(help_text='The Key at poscrossing', max_length=100, unique=True, verbose_name='Postcrossing ID'),
+            model_name="pcpostcard",
+            name="pc_id",
+            field=models.CharField(
+                help_text="The Key at poscrossing",
+                max_length=100,
+                unique=True,
+                verbose_name="Postcrossing ID",
+            ),
         ),
     ]

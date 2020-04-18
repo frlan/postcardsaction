@@ -6,17 +6,24 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcrossing', '0005_auto_20200413_1726'),
+        ("postcrossing", "0005_auto_20200413_1726"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='pcuser',
-            options={'ordering': ['username'], 'verbose_name': 'Postcrossing User'},
+            name="pcuser",
+            options={
+                "ordering": ["username"],
+                "verbose_name": "Postcrossing User",
+            },
         ),
         migrations.AlterField(
-            model_name='pcuser',
-            name='username',
-            field=models.CharField(help_text='The username of postcrossing user', max_length=100, unique=True),
+            model_name="pcuser",
+            name="username",
+            field=models.CharField(
+                help_text="The username of postcrossing user",
+                max_length=100,
+                unique=True,
+            ),
         ),
     ]

@@ -16,11 +16,12 @@ class PCUser(models.Model):
         verbose_name = "Postcrossing User"
 
 
-
 class PCPostCard(models.Model):
     pc_id = models.CharField(
         "Postcrossing ID",
-        help_text="The Key at poscrossing", max_length=100, unique=True
+        help_text="The Key at poscrossing",
+        max_length=100,
+        unique=True,
     )
     from_user = models.ForeignKey(
         PCUser, on_delete=models.SET_NULL, related_name="from_user", null=True
@@ -42,4 +43,3 @@ class PCPostCard(models.Model):
     class Meta:
         ordering = ["-pc_id"]
         verbose_name = "Postcrossing Card"
-

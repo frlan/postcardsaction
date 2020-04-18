@@ -7,13 +7,19 @@ import tagulous.models.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcard', '0004_auto_20200418_1205'),
+        ("postcard", "0004_auto_20200418_1205"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='url',
-            name='tags',
-            field=tagulous.models.fields.TagField(_set_tag_meta=True, force_lowercase=False, help_text='Enter a comma-separated tag string', to='postcard.Tag', tree=True),
+            model_name="url",
+            name="tags",
+            field=tagulous.models.fields.TagField(
+                _set_tag_meta=True,
+                force_lowercase=False,
+                help_text="Enter a comma-separated tag string",
+                to="postcard.Tag",
+                tree=True,
+            ),
         ),
     ]

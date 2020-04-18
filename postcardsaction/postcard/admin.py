@@ -6,6 +6,7 @@ from .models import URL
 
 admin.site.register(URL)
 
+
 @admin.register(Postcard)
 class PostcardAdmin(admin.ModelAdmin):
     list_display = ["id", "description_short"]

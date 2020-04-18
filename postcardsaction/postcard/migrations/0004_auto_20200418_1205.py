@@ -6,21 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcard', '0003_auto_20191221_1916'),
+        ("postcard", "0003_auto_20191221_1916"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='URL',
+            name="URL",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tile', models.CharField(help_text='A short description/title of the URL', max_length=100)),
-                ('url', models.URLField(max_length=250)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "tile",
+                    models.CharField(
+                        help_text="A short description/title of the URL",
+                        max_length=100,
+                    ),
+                ),
+                ("url", models.URLField(max_length=250)),
             ],
         ),
         migrations.AddField(
-            model_name='postcard',
-            name='urls',
-            field=models.ManyToManyField(related_name='further_information', to='postcard.URL'),
+            model_name="postcard",
+            name="urls",
+            field=models.ManyToManyField(
+                related_name="further_information", to="postcard.URL"
+            ),
         ),
     ]
