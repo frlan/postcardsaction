@@ -4,53 +4,33 @@
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block content %}
 
-<div>
-<h1>»{{ object.description_short }}«</h1>
+<div class="container">
+	<div class="card">
+		<header class="card-header has-text-centered m-3">
+			<p class="card-header-title is-centered">{{ object.description_short}}</p>
+        </header>
+	<div class="card-image">
+		<figure class="image is-4by3">
+			<img src="{{ object.image.medium.url }}" alt="Placeholder image">
+		</figure>
+	</div>
 
-<img src="{{ object.image.medium.url }}" /><br/>
+	<div class="card-content">
+		<div class="content">
+			{{ object.description|markdown_filter|safe }}
 
-{{ object.description|markdown_filter|safe }}<br/>
+			<div class="tabs">
+				<ul>
+					<li class="is-active"><a>Copyright</a></li>
+					<li><a>Postcrossing</a></li>
+					<li><a>Links</a></li>
+				</ul>
+			</div>
 
-<h2>Copyrights</h2>
-{% if object.photo_copyright %}
-Photo by: <br/>
-	{% for p in  object.photo_copyright.all %}
-		{{ p }} <br/>
-	{% endfor %}
-	<br/>
-{% endif %}
-{% if object.print_copyright %}
-Printed/published by:<br/>
-	{% for p in  object.print_copyright.all %}
-		{{ p }} <br/>
-	{% endfor %}
-	<br/>
-{% endif %}
+		</div>
+	</div>
+</div>
 
+</div>
 
-{% if object.postcrossing %}
-<h2>Postcrossing</h2>
-Postcrossing: <br/>
-	<a href="{{object.postcrossing.url}}">{{object.postcrossing.pc_id}}</a>
-{% endif %}
-
-<h2>Tags</h2>
-{% for tag in object.tags.all %}
-{{ tag.name }}
-{% endfor %}
-
-{% if object.urls.all %}
-<h2>More information</h2>
-<ul>
-{% for url in object.urls.all %}
-<li><strong>URL: </strong><a href="{{url.url}}">{{ url.title }}</a></li>
-{% endfor %}
-</ul>
-{% endif %}
-
-<h2>Statistics</h2>
-
-Viess: {{ hitcount.total_hits }} <br \><br \>
-
-<a href="{% url "index" %}">Home</a>
 {% endblock %}
