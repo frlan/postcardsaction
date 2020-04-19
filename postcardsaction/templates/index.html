@@ -13,13 +13,15 @@
             {% for item in object_list %}
                 <div class="column has-background-light">
                     <div class="card">
-                        <header class="card-header">
+                        <header class="card-header has-text-centered">
                             <p class="card-header-title"><a href="{% url "postcard_detail" item.id %}">{{ item.description_short }}</a></p>
                         </header>
                         <div class="card-content">
                             <div class="content">
-                                <p>{{ item.year_recieved}} </p>
                                 <a href="{% url "postcard_detail" item.id %}"><img src="{{ item.image.thumbnail.url }}"/></a>
+                            </div>
+                            <div class="content">
+                                <p>{{ item.year_recieved}} </p>
                             </div>
                         </div>
                     </div>
