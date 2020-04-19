@@ -1,3 +1,6 @@
+{% load django_simple_bulma %}
+{% bulma %}
+{% font_awesome %}
 <!DOCTYPE html>{% load staticfiles %}{% load static %}{% load i18n %}
 <html lang={% trans "en" %}>
   <head>
@@ -6,7 +9,14 @@
     {% block stylesheets %}{% endblock %}
     <title>{% block head_title %}Start{% endblock %}</title>
   </head>
-  <body>
+  <body  class="has-background-light">
     {% block content %}Empty page{% endblock %}
   </body>
+  {% block footer %}
+  <footer class="footer has-background-light">
+  <div class="content has-text-centered">
+      <p>footer</p>
+  </div>
+  </footer>
+  {% endblock %}
 </html>

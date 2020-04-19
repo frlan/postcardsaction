@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "tagulous",
     "postcrossing",
     "hitcount",
+    "django_simple_bulma",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,14 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+STATICFILES_FINDERS = [
+  # First add the two default Finders, since this will overwrite the default.
+  'django.contrib.staticfiles.finders.FileSystemFinder',
+  'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+  # Now add our custom SimpleBulma one.
+  'django_simple_bulma.finders.SimpleBulmaFinder',
 ]
 
 ROOT_URLCONF = "postcardsaction.urls"

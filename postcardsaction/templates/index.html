@@ -1,22 +1,32 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-
+{% load django_simple_bulma %}
+{% bulma %}
+{% font_awesome %}
 {% block content %}
-<div style="margin=20px;">
-{% for item in object_list %}
-    <div>
-    <h2><a href="{% url "postcard_detail" item.id %}">{{ item.description_short }}</a></h2>
-    <p>Received: {{ item.year_recieved}} </p>
-    <a href="{% url "postcard_detail" item.id %}"><img src="{{ item.image.thumbnail.url }}"/></a>
+<div class="container">
+    <h1 class="title">Postcards</h1>
+    <div class="columns">
+        <div class="column">
+            <div class="columns is-multiline">
+            {% for item in object_list %}
+                <div class="column has-background-light">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title"><a href="{% url "postcard_detail" item.id %}">{{ item.description_short }}</a></p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p>{{ item.year_recieved}} </p>
+                                <a href="{% url "postcard_detail" item.id %}"><img src="{{ item.image.thumbnail.url }}"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
     </div>
-{% endfor %}
 </div>
-{% if tags %}
-    <h2>Tags</h2>
-    <p>
-    {% for tag in tags %}
-        {{ tag.name }}{{ tag.weight }}
-    {% endfor %}
-{% endif %}
 {% endblock %}
