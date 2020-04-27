@@ -4,10 +4,29 @@
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block content %}
 
+<script>
+/* Got it from
+   https://codepen.io/t7team/pen/ZowdRN */
+function openTab(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("content-tab");
+  for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " is-active";
+}
+
+</script>
+
 <div class="container">
 	<div class="card">
 		<header class="card-header has-text-centered m-3">
-			<p class="card-header-title is-centered">{{ object.description_short}}</p>
+			<h1 class="card-header">{{ object.description_short}}</h1>
         </header>
 	<div class="card-image">
 		<figure class="image is-4by3">
@@ -21,15 +40,49 @@
 
 			<div class="tabs">
 				<ul>
-					<li class="is-active"><a>Copyright</a></li>
-					<li><a>Postcrossing</a></li>
-					<li><a>Links</a></li>
+					<li class="tab is-active" onclick="openTab(event,'copyright')"><a>Copyright</a></li>
+					<li class="tab" onclick="openTab(event,'postcrossing')" ><a>Postcrossing</a></li>
+					<li class="tab" onclick="openTab(event,'links')"><a>Links</a></li>
 				</ul>
 			</div>
+			<div id="copyright" class="content-tab" >
+				<h2>Copyrights</h2>
+				{% if object.photo_copyright %}
+				<h3>Photo</h3>
+					{% for p in  object.photo_copyright.all %}
+							{{ p }} <br/>
+					{% endfor %}
+				{% endif %}
+				{% if object.print_copyright %}
+				<h3>Print</h3>
+					{% for p in  object.print_copyright.all %}
+							{{ p }} <br/>
+					{% endfor %}
+				{% endif %}
+			</div>
+			<div id="postcrossing" class="content-tab" style="display:none">
+				{% if object.postcrossing %}
+				<h2>Postcrossing</h2>
+				<a href="{{object.postcrossing.url}}">{{object.postcrossing.pc_id}}</a>
+				{% endif %}
+			</div>
+			<div id="links" class="content-tab" style="display:none">
+			{% if object.urls.all %}
+				<h2>Links</h2>
+				<ul>
+					{% for url in object.urls.all %}
+						<li><a href="{{url.url}}">{{ url.title }}</a></li>
+					{% endfor %}
+				</ul>
+			{% endif %}
 
+
+			</div>
 		</div>
 	</div>
 </div>
+
+
 
 </div>
 
