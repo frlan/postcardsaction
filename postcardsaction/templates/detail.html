@@ -3,87 +3,91 @@
 
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block content %}
+	<section class="hero is-dark">
+		<div class="hero-body">
+			<div class="container">
+				<h1 class="title">{{ object.description_short}}</h1>
+			</div>
+		</div>
+	</section>
 
-<script>
-/* Got it from
-   https://codepen.io/t7team/pen/ZowdRN */
-function openTab(evt, tabName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("content-tab");
-  for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tab");
-  for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " is-active";
-}
-
-</script>
-
-<div class="container">
-	<div class="card">
-		<header class="card-header has-text-centered m-3">
-			<h1 class="card-header">{{ object.description_short}}</h1>
-        </header>
-	<div class="card-image">
-		<figure class="image is-4by3">
-			<img src="{{ object.image.medium.url }}" alt="Placeholder image">
-		</figure>
-	</div>
-
-	<div class="card-content">
-		<div class="content">
-			{{ object.description|markdown_filter|safe }}
-
-			<div class="tabs">
+	<div class="section">
+		<div class="container box">
+			<nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
 				<ul>
-					<li class="tab is-active" onclick="openTab(event,'copyright')"><a>Copyright</a></li>
-					<li class="tab" onclick="openTab(event,'postcrossing')" ><a>Postcrossing</a></li>
-					<li class="tab" onclick="openTab(event,'links')"><a>Links</a></li>
+					<li><a href="{% url "index" %}">Start</a></li>
+					<li class="is-active"><a href="#" aria-current="page">{{ object.description_short}}</a></li>
 				</ul>
+			</nav>
+			<div class="card-image">
+				<div class="columns">
+					<div class="column">
+						<figure class="image is-4by3">
+							<img src="{{ object.image.medium.url }}" alt="Placeholder image">
+						</figure>
+					</div>
+					<div class="column">
+						<div class="card-content is-size-5">
+							<h2 class="title card-header">Über</h2>
+							{{ object.description|markdown_filter|safe }}
+						</div>
+					</div>
+				</div>
 			</div>
-			<div id="copyright" class="content-tab" >
-				<h2>Copyrights</h2>
-				{% if object.photo_copyright %}
-				<h3>Photo</h3>
-					{% for p in  object.photo_copyright.all %}
-							{{ p }} <br/>
-					{% endfor %}
-				{% endif %}
-				{% if object.print_copyright %}
-				<h3>Print</h3>
-					{% for p in  object.print_copyright.all %}
-							{{ p }} <br/>
-					{% endfor %}
-				{% endif %}
-			</div>
-			<div id="postcrossing" class="content-tab" style="display:none">
-				{% if object.postcrossing %}
-				<h2>Postcrossing</h2>
-				<a href="{{object.postcrossing.url}}">{{object.postcrossing.pc_id}}</a>
-				{% endif %}
-			</div>
-			<div id="links" class="content-tab" style="display:none">
-			{% if object.urls.all %}
-				<h2>Links</h2>
-				<ul>
-					{% for url in object.urls.all %}
-						<li><a href="{{url.url}}">{{ url.title }}</a></li>
-					{% endfor %}
-				</ul>
-			{% endif %}
 
-
+			<div class="card-content">
+				<div class="content">
+					<div class="tabs">
+						<ul>
+							<li class="tab is-active" onclick="openTab(event,'tags')"><a>Tags</a></li>
+							<li class="tab" onclick="openTab(event,'copyright')"><a>Copyright</a></li>
+							<li class="tab" onclick="openTab(event,'postcrossing')" ><a>Postcrossing</a></li>
+							<li class="tab" onclick="openTab(event,'links')"><a>Links</a></li>
+						</ul>
+					</div>
+					<div id="tags" class="content-tab" >
+						<h2>Tags</h2>
+						<p>
+						{% for tag in object.tags.all %}
+						<span class="tag is-dark">{{tag.name}}</span>
+						{% endfor %}
+						</p>
+					</div>
+					<div id="copyright" class="content-tab" style="display:none" >
+						<h2>Copyrights</h2>
+						{% if object.photo_copyright %}
+						<h3>Photo</h3>
+							{% for p in  object.photo_copyright.all %}
+									{{ p }} <br/>
+							{% endfor %}
+						{% endif %}
+						{% if object.print_copyright %}
+						<h3>Print</h3>
+							{% for p in  object.print_copyright.all %}
+									{{ p }} <br/>
+							{% endfor %}
+						{% endif %}
+					</div>
+					<div id="postcrossing" class="content-tab" style="display:none">
+						<h2>Postcrossing</h2>
+						{% if object.postcrossing %}
+						<p><a href="{{object.postcrossing.url}}">{{object.postcrossing.pc_id}}</a></p>
+						{% else %}
+						<p>Keine Informationen verfügbar.</p>
+						{% endif %}
+					</div>
+					<div id="links" class="content-tab" style="display:none">
+					{% if object.urls.all %}
+						<h2>Links</h2>
+						<ul>
+							{% for url in object.urls.all %}
+								<li><a href="{{url.url}}">{{ url.title }}</a></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-
-
-</div>
-
 {% endblock %}

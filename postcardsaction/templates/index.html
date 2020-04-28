@@ -5,30 +5,40 @@
 {% bulma %}
 {% font_awesome %}
 {% block content %}
-<div class="container">
-    <h1 class="title">Postcards</h1>
-    <div class="columns">
-        <div class="column">
-            <div class="columns is-multiline">
+	<section class="hero is-dark">
+		<div class="hero-body">
+			<div class="container">
+				<h1 class="title">Postkarten Sammlung</h1>
+			</div>
+		</div>
+	</section>
+
+    <div class="section">
+        <div class="container box">
+            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                <ul>
+                    <li class="is-active"><a href="#" aria-current="page">Start</a></li>
+                </ul>
+            </nav>
+            <div class="tile is-ancestor">
             {% for item in object_list %}
-                <div class="column has-background-light">
-                    <div class="card">
-                        <header class="card-header has-text-centered">
-                            <p class="card-header-title"><a href="{% url "postcard_detail" item.id %}">{{ item.description_short }}</a></p>
-                        </header>
-                        <div class="card-content">
-                            <div class="content">
-                                <a href="{% url "postcard_detail" item.id %}"><img src="{{ item.image.thumbnail.url }}"/></a>
-                            </div>
-                            <div class="content">
-                                <p>{{ item.year_recieved}} </p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tile is-parent is-3">
+                    <article class="tile is-child box">
+                        <p class="subtitle">{{item.description_short}}</p>
+                        <figure class="image is-4by3">
+                            <a href="{% url "postcard_detail" item.id %}">
+                                <img src="{{item.image.thumbnail.url}}" alt="{{item.description_short}}" />
+                            </a>
+                        </figure>
+                        <p>{{item.year_recieved}}</p>
+                    </article>
                 </div>
+            {% if forloop.counter|divisibleby:"4" and not forloop.last %}
+            </div>
+            <div class="tile is-ancestor">
+            {% endif %}
             {% endfor %}
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

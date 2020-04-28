@@ -1,22 +1,41 @@
+<!DOCTYPE html>{% load staticfiles %}{% load static %}{% load i18n %}
+<html lang={% trans "en" %}>
 {% load django_simple_bulma %}
 {% bulma %}
 {% font_awesome %}
-<!DOCTYPE html>{% load staticfiles %}{% load static %}{% load i18n %}
-<html lang={% trans "en" %}>
-  <head>
+  <header>
     <meta charset="utf-8" />
     <meta name="generator" content="postcardsaction" />
     {% block stylesheets %}{% endblock %}
     <title>{% block head_title %}Start{% endblock %}</title>
-  </head>
-  <body  class="has-background-light">
+  </header>
+  <script>
+  /* Inspired by
+     https://codepen.io/t7team/pen/ZowdRN */
+  function openTab(evt, tabName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("content-tab");
+  for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " is-active";
+  }
+
+</script>
+  <body class="has-background-light">
     {% block content %}Empty page{% endblock %}
   </body>
   {% block footer %}
-  <footer class="footer has-background-light">
-  <div class="content has-text-centered">
-      <p>footer</p>
-  </div>
-  </footer>
+    <footer class="footer has-background-light">
+        <div class="content has-text-centered">
+            <p>Servered by <a href="https://github.com/frlan/postcardsaction">PostcardsAction</a> under terms of AGPLv3</p>
+            <p>Powered by<a href="https://www.djangoproject.com/">Django</a> and <a href="https://bulma.io/">Bulma</a>.</p>
+        </div>
+    </footer>
   {% endblock %}
 </html>
