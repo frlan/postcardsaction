@@ -155,3 +155,15 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/all"),)
 MARKDOWN_EDITOR_SKIN = "simple"
 
 MARKDOWN_FILTER_WHITELIST_TAGS = ["a", "p", "code", "h1"]
+
+##################
+# LOCAL SETTINGS #
+##################
+# Allow any settings to be defined in local_settings.py which should be
+# ignored in your version control system allowing for settings to be
+# defined per machine.
+try:
+    from .local_settings import *  # pylint: disable=W0401,W0614
+except ImportError:
+    pass
+
