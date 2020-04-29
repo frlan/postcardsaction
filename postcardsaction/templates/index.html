@@ -24,7 +24,7 @@
             {% for item in object_list %}
                 <div class="tile is-parent is-3">
                     <article class="tile is-child box">
-                        <p class="subtitle">{{item.description_short}}</p>
+                        <h2 class="subtitle">{{item.description_short}}</h2>
                         <p>{{item.year_recieved}}</p>
                         <figure class="image is-4by3">
                             <a href="{% url "postcard_detail" item.id %}">
