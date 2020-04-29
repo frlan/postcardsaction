@@ -25,12 +25,12 @@
                 <div class="tile is-parent is-3">
                     <article class="tile is-child box">
                         <p class="subtitle">{{item.description_short}}</p>
+                        <p>{{item.year_recieved}}</p>
                         <figure class="image is-4by3">
                             <a href="{% url "postcard_detail" item.id %}">
                                 <img src="{{item.image.thumbnail.url}}" alt="{{item.description_short}}" />
                             </a>
                         </figure>
-                        <p>{{item.year_recieved}}</p>
                     </article>
                 </div>
             {% if forloop.counter|divisibleby:"4" and not forloop.last %}
