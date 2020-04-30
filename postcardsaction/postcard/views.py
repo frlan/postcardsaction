@@ -9,6 +9,10 @@ class IndexView(ListView):
     model = Postcard
     paginate_by = 100
 
+    def get_queryset(self):
+        postcards = Postcard.objects.exclude(published="False")
+        return postcards
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tags"] = Postcard.tags.tag_model.objects.weight()

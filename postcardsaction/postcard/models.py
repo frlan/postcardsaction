@@ -103,6 +103,11 @@ class Postcard(models.Model):
     )
     urls = models.ManyToManyField(URL, related_name="further_information")
 
+    published = models.BooleanField(
+        default=False,
+        help_text="Whether this postcard is visible."
+    )
+
     def __str__(self):
         return self.description_short
 
