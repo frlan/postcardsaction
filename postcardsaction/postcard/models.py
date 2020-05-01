@@ -101,7 +101,8 @@ class Postcard(models.Model):
     postcrossing = models.ForeignKey(
         PCPostCard, on_delete=models.CASCADE, null=True, blank=True
     )
-    urls = models.ManyToManyField(URL, related_name="further_information")
+    urls = models.ManyToManyField(
+        URL, related_name="further_information", blank=True)
 
     published = models.BooleanField(
         default=False,
