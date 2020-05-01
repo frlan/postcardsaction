@@ -23,3 +23,4 @@ class PostcardDetailView(HitCountDetailView):
     count_hit = True
     template_name = "detail.html"
     model = Postcard
+    queryset = Postcard.objects.filter(published=True)
