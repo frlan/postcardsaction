@@ -89,7 +89,10 @@
 					</div>
 					<div id="meta" class="content-tab" style="display:none">
 						<h2>Meta</h2>
-						<p><strong>Erhalten:</strong> {{object.year_recieved}}</p>
+						<p>
+							<strong>Erhalten:</strong> {{object.year_recieved}}
+							{% if not object.year_verified %} (ungefähr) {% endif %}
+						</p>
 					</div>
 				</div>
 			</div>
