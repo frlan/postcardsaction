@@ -50,14 +50,22 @@
 						<h2>Copyrights</h2>
 						{% if object.photo_copyright %}
 						<h3>Photo</h3>
-							{% for p in  object.photo_copyright.all %}
-									{{ p }} <br/>
+							{% for p in object.photo_copyright.all %}
+								{% if p.holder.url %}
+									<p><a href="{{p.holder.url}}">{{ p }}</a></p>
+								{% else %}
+									<p>{{ p }}</p>
+								{% endif %}
 							{% endfor %}
 						{% endif %}
 						{% if object.print_copyright %}
 						<h3>Print</h3>
-							{% for p in  object.print_copyright.all %}
-									{{ p }} <br/>
+							{% for p in object.print_copyright.all %}
+								{% if p.holder.url %}
+									<p><a href="{{p.holder.url}}">{{ p }}</a></p>
+								{% else %}
+									<p>{{ p }}</p>
+								{% endif %}
 							{% endfor %}
 						{% endif %}
 					</div>
