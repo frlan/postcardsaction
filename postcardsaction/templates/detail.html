@@ -39,19 +39,12 @@
 				<div class="content">
 					<div class="tabs">
 						<ul>
-							<li class="tab is-active" onclick="openTab(event,'tags')"><a>Tags</a></li>
 							<li class="tab" onclick="openTab(event,'copyright')"><a>Copyright</a></li>
 							<li class="tab" onclick="openTab(event,'postcrossing')" ><a>Postcrossing</a></li>
 							<li class="tab" onclick="openTab(event,'links')"><a>Links</a></li>
+							<li class="tab is-active" onclick="openTab(event,'tag-list')"><a>Tags</a></li>
+							<li class="tab" onclick="openTab(event,'meta')"><a>Meta</a></li>
 						</ul>
-					</div>
-					<div id="tags" class="content-tab" >
-						<h2>Tags</h2>
-						<p>
-						{% for tag in object.tags.all %}
-						<span class="tag is-dark">{{tag.name}}</span>
-						{% endfor %}
-						</p>
 					</div>
 					<div id="copyright" class="content-tab" style="display:none" >
 						<h2>Copyrights</h2>
@@ -67,6 +60,14 @@
 									{{ p }} <br/>
 							{% endfor %}
 						{% endif %}
+					</div>
+					<div id="tag-list" class="content-tab" >
+						<h2>Tags</h2>
+						<p>
+						{% for tag in object.tags.all %}
+						<span class="tag is-dark">{{tag.name}}</span>
+						{% endfor %}
+					</p>
 					</div>
 					<div id="postcrossing" class="content-tab" style="display:none">
 						<h2>Postcrossing</h2>
@@ -85,6 +86,10 @@
 							{% endfor %}
 						</ul>
 					{% endif %}
+					</div>
+					<div id="meta" class="content-tab" style="display:none">
+						<h2>Meta</h2>
+						<p><strong>Erhalten:</strong> {{object.year_recieved}}</p>
 					</div>
 				</div>
 			</div>
