@@ -41,5 +41,5 @@ class PCPostCard(models.Model):
         return "https://www.postcrossing.com/postcards/{}".format(self.pc_id)
 
     class Meta:
-        ordering = ["-pc_id"]
+        ordering = ["pc_id"]
         verbose_name = "Postcrossing Card"
