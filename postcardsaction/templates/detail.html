@@ -19,16 +19,19 @@
 					<li class="is-active"><a href="#" aria-current="page">{{ object.description_short}}</a></li>
 				</ul>
 			</nav>
-			<div class="card-image">
+			<div class="card">
+							<header>
+							<h2 class="title">Über</h2>
+						</header>
+
 				<div class="columns">
 					<div class="column">
-						<figure class="image is-4by3">
+						<figure class="image">
 							<img src="{{ object.image.medium.url }}" alt="Placeholder image">
 						</figure>
 					</div>
 					<div class="column">
 						<div class="card-content is-size-5">
-							<h2 class="title card-header">Über</h2>
 							{{ object.description|markdown_filter|safe }}
 						</div>
 					</div>

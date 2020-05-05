@@ -26,7 +26,7 @@
                     <article class="tile is-child box">
                         <h2 class="subtitle">{{item.description_short}}</h2>
                         <p>{{item.creation_timestamp|date:'Y-m-d'}}</p>
-                        <figure class="image is-4by3">
+                        <figure class="image">
                             <a href="{% url "postcard_detail" item.id %}">
                                 <img src="{{item.image.thumbnail.url}}" alt="{{item.description_short}}" />
                             </a>
