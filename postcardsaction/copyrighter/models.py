@@ -8,6 +8,8 @@ class Holder(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ["name"]
 
 class Licence(models.Model):
     slug = models.CharField(max_length=30)
@@ -29,3 +31,6 @@ class Copyright(models.Model):
             return "{} ({})".format(self.holder, self.licence)
         else:
             return "{}".format(self.holder)
+
+    class Meta:
+        ordering = ["holder"]
