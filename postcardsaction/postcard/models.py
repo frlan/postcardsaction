@@ -39,6 +39,7 @@ import datetime
 import tagulous.models
 from copyrighter.models import Copyright
 from postcrossing.models import PCPostCard
+from django.urls import reverse
 
 
 class Tag(tagulous.models.TagTreeModel):
@@ -114,6 +115,9 @@ class Postcard(models.Model):
 
     def __str__(self):
         return self.description_short
+
+    def get_absolute_url(self):
+        return reverse("postcard_detail", kwargs={"slug": str(self.slug)})
 
     class Meta:
         ordering = ["-id"]

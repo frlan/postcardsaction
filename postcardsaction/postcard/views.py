@@ -1,8 +1,10 @@
+from django.contrib.syndication.views import Feed
 from django.shortcuts import render
-from .models import Postcard
-from django.views.generic.list import ListView
+from django.urls import reverse
 from django.views.generic import DetailView
+from django.views.generic.list import ListView
 from hitcount.views import HitCountDetailView
+from .models import Postcard
 
 
 class IndexView(ListView):
@@ -24,3 +26,23 @@ class PostcardDetailView(HitCountDetailView):
     template_name = "detail.html"
     model = Postcard
     queryset = Postcard.objects.filter(published=True)
+
+
+class LatestPostcardsFeed(Feed):
+    title = "Latest Cards"
+    description = "Latest Items"
+    link = "/"
+    description_template = "feeds/postcards.html"
+
+    def items(self):
+        return Postcard.objects.all()
+
+    def item_title(self, item):
+        return item.description_short
+
+    def item_description(self, item):
+        return item.description
+
+    def item_link(self, item):
+        return reverse('postcard_detail', args=[item.pk])
+

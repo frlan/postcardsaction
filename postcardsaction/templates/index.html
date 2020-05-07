@@ -23,15 +23,18 @@
             <div class="tile is-ancestor">
             {% for item in object_list %}
                 <div class="tile is-parent is-3">
-                    <article class="tile is-child box">
-                        <h2 class="subtitle">{{item.description_short}}</h2>
-                        <p>{{item.creation_timestamp|date:'Y-m-d'}}</p>
-                        <figure class="image">
-                            <a href="{% url "postcard_detail" item.id %}">
-                                <img src="{{item.image.thumbnail.url}}" alt="{{item.description_short}}" />
-                            </a>
-                        </figure>
-                    </article>
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title has-text-dark"><a class="has-text-dark" href="{% url "postcard_detail" item.id %}">{{ item.description_short }} </a></p>
+                        </header>
+                        <div class="card-content">
+                            <figure class="image">
+                                <a href="{% url "postcard_detail" item.id %}">
+<img src="{{ item.image.medium.url }}" alt="{{ item.description_short }}"> </a>
+                            </figure>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
                 </div>
             {% if forloop.counter|divisibleby:"4" and not forloop.last %}
             </div>

@@ -23,10 +23,12 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from postcard.views import IndexView
 from postcard.views import PostcardDetailView
+from postcard.views import LatestPostcardsFeed
 
 
 urlpatterns = [
     url(r"^$", IndexView.as_view(template_name="index.html"), name="index"),
+    url(r'^feed/$', LatestPostcardsFeed(), name='news_feed'),
     path("admin/", admin.site.urls),
     path("markdown/", include("django_markdown.urls")),
     url(
