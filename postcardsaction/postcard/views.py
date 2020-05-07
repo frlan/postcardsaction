@@ -35,7 +35,7 @@ class LatestPostcardsFeed(Feed):
     description_template = "feeds/postcards.html"
 
     def items(self):
-        return Postcard.objects.all()
+        return Postcard.objects.exclude(published="False")
 
     def item_title(self, item):
         return item.description_short
