@@ -29,6 +29,15 @@
     </script>
   </head>
   <body class="has-background-light">
+    {% block navigation %}
+    	<section class="hero is-dark">
+		<div class="hero-body">
+			<div class="container">
+				<h1 class="title"><a href="{% url "index" %}">Postkarten Sammlung</a></h1>
+			</div>
+		</div>
+	</section>
+    {% endblock %}
     {% block content %}Empty page{% endblock %}
       {% block footer %}
     <footer class="footer has-background-light">
