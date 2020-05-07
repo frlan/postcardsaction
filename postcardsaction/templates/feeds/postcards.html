@@ -1,5 +1,5 @@
 {% load i18n %}{% load markdown_filter %}
 
-{{ obj.description_short}}
+<h1>{{ obj.description_short}}</h1>
 <img src="{{request.scheme}}://{{request.META.HTTP_HOST}}{{obj.image.medium.url}}" />
 
