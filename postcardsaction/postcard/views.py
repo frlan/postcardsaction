@@ -1,10 +1,10 @@
+from .models import Postcard
 from django.contrib.syndication.views import Feed
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from hitcount.views import HitCountDetailView
-from .models import Postcard
 
 
 class IndexView(ListView):
@@ -46,3 +46,5 @@ class LatestPostcardsFeed(Feed):
     def item_link(self, item):
         return reverse('postcard_detail', args=[item.pk])
 
+    def item_categories(self, item):
+        return item.tags.tags
