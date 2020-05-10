@@ -98,6 +98,7 @@
 							{% if not object.year_verified %} (ungefähr) {% endif %}
 						</p>
 						<p><strong>Letztes Update: </strong>{{object.last_udpated}}</p>
+						<p><strong>Ansichten: </strong>{% get_hit_count for object %}</p>
 					</div>
 				</div>
 			</div>
