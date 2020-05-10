@@ -15,7 +15,7 @@
             <div class="tile is-ancestor">
             {% for item in object_list %}
                 <div class="tile is-parent is-3">
-                    <div class="card">
+                    <div class="card box">
                         <header class="card-header">
                             <p class="card-header-title has-text-dark"><a class="has-text-dark" href="{% url "postcard_detail" item.id %}">{{ item.description_short }} </a></p>
                         </header>
