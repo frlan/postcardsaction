@@ -6,12 +6,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('copyrighter', '0002_holder_url'),
+        ("copyrighter", "0002_holder_url"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='copyright',
-            options={'ordering': ['holder']},
+            name="copyright", options={"ordering": ["holder"]},
         ),
     ]
