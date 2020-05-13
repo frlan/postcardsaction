@@ -131,3 +131,6 @@ class PostcardItem(models.Model):
 
     creation_timestamp = models.DateTimeField(auto_now_add=True)
     last_udpated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["id"]
