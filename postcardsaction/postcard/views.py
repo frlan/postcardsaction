@@ -27,6 +27,12 @@ class PostcardDetailView(HitCountDetailView):
     model = Postcard
     queryset = Postcard.objects.filter(published=True)
 
+    def get_context_data(self, **kwargs):
+        context = super(PostcardDetailView, self).get_context_data(**kwargs)
+        if self.object.postcarditem_set.all():
+            context['postcards'] = self.object.postcarditem_set.all()
+        return context
+
 
 class LatestPostcardsFeed(Feed):
     title = "Latest Cards"

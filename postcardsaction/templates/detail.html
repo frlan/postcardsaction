@@ -3,6 +3,7 @@
 
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block content %}
+
 	<div class="section">
 		<div class="container box">
 			<nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
@@ -75,15 +76,18 @@
 					</div>
 					<div id="postcrossing" class="content-tab" style="display:none">
 						<h2>Postcrossing</h2>
-						{% if object.postcarditem_set.all %}
+						{% if postcards %}
 							<ul>
-							{% for pc in object.postcarditem_set.all %}
+							{% for pc in postcards %}
 								{% if pc.postcrossing %}
 									<li><a href="{{pc.postcrossing.url}}">{{pc.postcrossing.pc_id}}</a></li>
 								{% endif %}
 							{% endfor %}
 							</ul>
+						{% else %}
+						<p>Keine Information verfügbar.</p>
 						{% endif %}
+
 					</div>
 					<div id="links" class="content-tab" style="display:none">
 					{% if object.urls.all %}
