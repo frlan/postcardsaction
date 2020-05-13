@@ -132,5 +132,14 @@ class PostcardItem(models.Model):
     creation_timestamp = models.DateTimeField(auto_now_add=True)
     last_udpated = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        if self.postcrossing:
+            return "{} ({})".format(
+                self.postcard.description_short,
+                self.postcrossing.pc_id)
+        else:
+            return self.postcard.description_short
+
+
     class Meta:
         ordering = ["id"]
