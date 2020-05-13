@@ -75,10 +75,14 @@
 					</div>
 					<div id="postcrossing" class="content-tab" style="display:none">
 						<h2>Postcrossing</h2>
-						{% if object.postcrossing %}
-						<p><a href="{{object.postcrossing.url}}">{{object.postcrossing.pc_id}}</a></p>
-						{% else %}
-						<p>Keine Informationen verfügbar.</p>
+						{% if object.postcarditem_set.all %}
+							<ul>
+							{% for pc in object.postcarditem_set.all %}
+								{% if pc.postcrossing %}
+									<li><a href="{{pc.postcrossing.url}}">{{pc.postcrossing.pc_id}}</a></li>
+								{% endif %}
+							{% endfor %}
+							</ul>
 						{% endif %}
 					</div>
 					<div id="links" class="content-tab" style="display:none">
@@ -93,12 +97,11 @@
 					</div>
 					<div id="meta" class="content-tab" style="display:none">
 						<h2>Meta</h2>
-						<p>
-							<strong>Erhalten:</strong> {{object.year_recieved}}
-							{% if not object.year_verified %} (ungefähr) {% endif %}
-						</p>
-						<p><strong>Letztes Update: </strong>{{object.last_udpated}}</p>
-						<p><strong>Ansichten: </strong>{% get_hit_count for object %}</p>
+						<ul>
+						</ul>
+						<li><strong>Aufgenommen: </strong>{{object.creation_timestamp}}</li>
+						<li><strong>Letztes Update: </strong>{{object.last_udpated}}</li>
+						<li><strong>Ansichten: </strong>{% get_hit_count for object %}</li>
 					</div>
 				</div>
 			</div>

@@ -88,23 +88,14 @@ class Postcard(models.Model):
         },
         delete_orphans=True,
     )
-    swapping = models.BooleanField(
-        default=False,
-        help_text="Whether this postcard is free for private swapping",
-    )
-    year_recieved = models.DateField("Date", default=datetime.date.today)
-    year_verified = models.BooleanField(
-        default=True, help_text="Whether the year of recieving is verified"
-    )
+
     creation_timestamp = models.DateTimeField(auto_now_add=True)
     last_udpated = models.DateTimeField(auto_now=True)
 
     tags = tagulous.models.TagField(to=Tag)
     photo_copyright = models.ManyToManyField(Copyright, related_name="photo")
     print_copyright = models.ManyToManyField(Copyright, related_name="print")
-    postcrossing = models.ForeignKey(
-        PCPostCard, on_delete=models.CASCADE, null=True, blank=True
-    )
+
     urls = models.ManyToManyField(
         URL, related_name="further_information", blank=True)
 
@@ -121,3 +112,22 @@ class Postcard(models.Model):
 
     class Meta:
         ordering = ["-id"]
+
+
+class PostcardItem(models.Model):
+
+    postcard = models.ForeignKey(
+        Postcard, on_delete=models.CASCADE)
+    postcrossing = models.ForeignKey(
+        PCPostCard, on_delete=models.CASCADE, null=True, blank=True)
+    swapping = models.BooleanField(
+        default=False,
+        help_text="Whether this postcard is free for private swapping",
+    )
+    year_recieved = models.DateField("Date", default=datetime.date.today)
+    year_verified = models.BooleanField(
+        default=True, help_text="Whether the year of recieving is verified"
+    )
+
+    creation_timestamp = models.DateTimeField(auto_now_add=True)
+    last_udpated = models.DateTimeField(auto_now=True)
