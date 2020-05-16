@@ -2,6 +2,11 @@
 {% load i18n %}{% load markdown_filter %}{% load hitcount_tags %}
 
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
+{% block metatags %}
+<meta property="og:title" content="{{ object.description_short }}">
+<meta property="og:image" content="{{ object.image.thumbnail.url }}">
+{% endblock %}
+
 {% block content %}
 
 	<div class="section">
