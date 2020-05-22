@@ -40,6 +40,7 @@ import tagulous.models
 from copyrighter.models import Copyright
 from postcrossing.models import PCPostCard
 from django.urls import reverse
+import django.utils.timezone
 
 
 class Tag(tagulous.models.TagTreeModel):
@@ -103,6 +104,11 @@ class Postcard(models.Model):
         default=False,
         help_text="Whether this postcard is visible."
     )
+    publishing_date = models.DateTimeField(
+        default=django.utils.timezone.now,
+        null=True,
+        blank=True)
+
 
     def __str__(self):
         return self.description_short
