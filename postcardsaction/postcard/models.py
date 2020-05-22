@@ -32,15 +32,15 @@
 # class Collection
 #   -> Postcard
 #
+from copyrighter.models import Copyright
 from django.db import models
 from django_markdown.models import MarkdownField
+from django.urls import reverse
+from postcrossing.models import PCPostCard
 from stdimage import StdImageField, JPEGField
 import datetime
-import tagulous.models
-from copyrighter.models import Copyright
-from postcrossing.models import PCPostCard
-from django.urls import reverse
 import django.utils.timezone
+import tagulous.models
 
 
 class Tag(tagulous.models.TagTreeModel):
