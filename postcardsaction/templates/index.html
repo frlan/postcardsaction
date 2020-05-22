@@ -24,7 +24,7 @@
                                 <a href="{% url "postcard_detail" item.id %}">
 <img src="{{ item.image.medium.url }}" alt="{{ item.description_short }}"> </a>
                             </figure>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                            <p><time datetime="2016-1-1">{% if item.publishing_date %}{{ item.publishing_date  }} {% else %} {{ item.creation_timestamp }} {% endif %}</time></p>
                         </div>
                     </div>
                 </div>
