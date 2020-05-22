@@ -54,3 +54,9 @@ class LatestPostcardsFeed(Feed):
 
     def item_categories(self, item):
         return item.tags.tags
+
+    def item_pubdate(self, item):
+        if item.publishing_date:
+            return item.publishing_date
+        else:
+            item.creation_timestamp
