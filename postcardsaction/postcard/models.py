@@ -91,7 +91,7 @@ class Postcard(models.Model):
     )
 
     creation_timestamp = models.DateTimeField(auto_now_add=True)
-    last_udpated = models.DateTimeField(auto_now=True)
+    last_updated = models.DateTimeField(auto_now=True)
 
     tags = tagulous.models.TagField(to=Tag)
     photo_copyright = models.ManyToManyField(Copyright, related_name="photo")
@@ -130,13 +130,13 @@ class PostcardItem(models.Model):
         default=False,
         help_text="Whether this postcard is free for private swapping",
     )
-    year_recieved = models.DateField("Date", default=datetime.date.today)
+    year_received = models.DateField("Date", default=datetime.date.today)
     year_verified = models.BooleanField(
-        default=True, help_text="Whether the year of recieving is verified"
+        default=True, help_text="Whether the year of receiving is verified"
     )
 
     creation_timestamp = models.DateTimeField(auto_now_add=True)
-    last_udpated = models.DateTimeField(auto_now=True)
+    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         if self.postcrossing:
