@@ -9,6 +9,11 @@ class Holder(models.Model):
 
     name = models.CharField(max_length=100)
     url = models.URLField(blank=True)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=50, blank=True)
+    address = models.TextField(
+        blank=True,
+        help_text="May contain free-text address data for the copyright holder")
 
     def __str__(self):
         return self.name
