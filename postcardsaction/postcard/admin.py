@@ -4,10 +4,11 @@ from .models import Postcard
 from .models import PostcardItem
 from .models import Tag
 from .models import URL
+from .models import Series
 
 admin.site.register(URL)
 admin.site.register(PostcardItem)
-
+admin.site.register(Series)
 
 @admin.register(Postcard)
 class PostcardAdmin(admin.ModelAdmin):

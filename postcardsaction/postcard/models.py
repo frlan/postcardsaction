@@ -65,6 +65,17 @@ class URL(models.Model):
         return self.title
 
 
+class Series(models.Model):
+    title = models.CharField(
+        max_length=100)
+    description = MarkdownField(
+        default="",
+        blank=True)
+
+    class Meta:
+        ordering = ["id"]
+        verbose_name_plural = "Series"
+
 class Postcard(models.Model):
 
     description_short = models.CharField(
@@ -108,6 +119,8 @@ class Postcard(models.Model):
         default=django.utils.timezone.now,
         null=True,
         blank=True)
+    series = models.ManyToManyField(
+        Series, related_name="series_member", blank=True)
 
 
     def __str__(self):
