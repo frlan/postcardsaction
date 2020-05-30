@@ -64,6 +64,9 @@ class URL(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ["title"]
+
 
 class Series(models.Model):
     title = models.CharField(
