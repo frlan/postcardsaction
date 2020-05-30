@@ -76,7 +76,7 @@ class Series(models.Model):
         return self.title
 
     class Meta:
-        ordering = ["id"]
+        ordering = ["title"]
         verbose_name_plural = "Series"
 
 
