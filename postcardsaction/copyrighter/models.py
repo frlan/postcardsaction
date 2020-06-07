@@ -47,12 +47,17 @@ class Copyright(models.Model):
     licence = models.ForeignKey(
         Licence, on_delete=models.CASCADE, null=True, blank=True
     )
+    year = models.IntegerField(
+        blank = True,
+        null = True)
 
     def __str__(self):
+        _tmp = [self.holder.__str__()]
         if self.licence:
-            return "{} ({})".format(self.holder, self.licence)
-        else:
-            return "{}".format(self.holder)
+            _tmp.append(self.licence.__str__())
+        if self.year:
+            _tmp.append("({})".format(self.year))
+        return ' '.join(_tmp)
 
     class Meta:
         ordering = ["holder"]
