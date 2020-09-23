@@ -24,8 +24,10 @@
                                 <a href="{% url "postcard_detail" item.id %}">
 <img src="{{ item.image.medium.url }}" alt="{{ item.description_short }}"> </a>
                             </figure>
-                            <p><time datetime="2016-1-1">{% if item.publishing_date %}{{ item.publishing_date  }} {% else %} {{ item.creation_timestamp }} {% endif %}</time></p>
                         </div>
+                        <footer class="card-footer">
+                            <p><time datetime="2016-1-1">{% if item.publishing_date %}{{ item.publishing_date  }} {% else %} {{ item.creation_timestamp }} {% endif %}</time></p>
+                        </footer>
                     </div>
                 </div>
             {% if forloop.counter|divisibleby:"4" and not forloop.last %}

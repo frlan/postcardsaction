@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.staticfiles",
     "django_markdown",
-    "markdown_filter",
+    "markdownify",
     "postcard",
     "stdimage",
     "tagulous",
@@ -152,9 +152,11 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/all"),)
 
-MARKDOWN_EDITOR_SKIN = "simple"
+# MARKDOWN_EDITOR_SKIN = "simple"
 
-MARKDOWN_FILTER_WHITELIST_TAGS = ["a", "p", "code", "h1"]
+# MARKDOWN_FILTER_WHITELIST_TAGS = ["a", "p", "code", "h1"]
+
+MARKDOWNIFY_BLEACH = False
 
 ##################
 # LOCAL SETTINGS #

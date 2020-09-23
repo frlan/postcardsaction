@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}{% load markdown_filter %}{% load hitcount_tags %}
+{% load i18n %}{% load markdownify %}{% load hitcount_tags %}
 
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block metatags %}
@@ -29,8 +29,8 @@
 							</figure>
 						</div>
 						<div class="column">
-							<div class="card-content is-size-5">
-								{{ object.description|markdown_filter|safe }}
+							<div class="content card-content is-size-5">
+								{{ object.description|markdownify }}
 							</div>
 						</div>
 					</div>

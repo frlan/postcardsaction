@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load staticfiles %}{% load static %}{% load i18n %}
+<!DOCTYPE html>{% load staticfiles %}{% load static %}{% load i18n %}{% load markdownify %}
 <html lang={% trans "en" %}>
   <head>
     <meta charset="utf-8" />
@@ -27,15 +27,15 @@
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " is-active";
     }
-
     </script>
+
   </head>
   <body class="has-background-light">
     {% block navigation %}
     	<section class="hero is-dark">
 		<div class="hero-body">
 			<div class="container">
-				<h1 class="title"><a href="{% url "index" %}">Postkarten Sammlung</a></h1>
+				<h1 class="title"><a class="has-text-light" href="{% url "index" %}">Postkarten Sammlung</a></h1>
 			</div>
 		</div>
 	</section>
@@ -43,7 +43,7 @@
     {% block content %}Empty page{% endblock %}
       {% block footer %}
     <footer class="footer has-background-light">
-        <div class="content has-text-centered">
+        <div class="has-text-centered has-background-light">
             <p>Served by <a href="https://github.com/frlan/postcardsaction">PostcardsAction</a> under terms of <a href="https://www.gnu.org/licenses/agpl-3.0.de.html">AGPLv3</a> if applyable</p>
             <p>Powered by <a href="https://www.djangoproject.com/">Django</a> and <a href="https://bulma.io/">Bulma</a>.</p>
             <p>Die Rechte der Bilder an sich liegen bei den Fotographen/Künstlern. Ich habe, soweit bekannt, Daten hinterlegt.</p>
