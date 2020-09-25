@@ -24,7 +24,7 @@ class Holder(models.Model):
 
     def __str__(self):
         if self.org_name:
-            return "{}({})".format(self.org_name, self.name)
+            return "{} ({})".format(self.org_name, self.name)
         else:
             return self.name
 
