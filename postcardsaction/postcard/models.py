@@ -73,6 +73,9 @@ class Series(models.Model):
     title = models.CharField(max_length=100)
     description = MarkdownField(default="", blank=True)
 
+    urls = models.ManyToManyField(URL,
+                                  related_name="series_links",
+                                  blank=True)
     def __str__(self):
         return self.title
 
