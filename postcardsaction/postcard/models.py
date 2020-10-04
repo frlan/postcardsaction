@@ -1,37 +1,3 @@
-# class Tag:
-#   - extern
-#
-# class Images/Gallery
-#   - extern
-#
-# class URLs
-#   - extern
-#       - django-linkcheck
-#
-# class Copyright
-#   -> publisher
-#   -> fotographer
-#
-# class Postcard
-#   -> Tag
-#   -> Images
-#   -> URLs
-#
-#   -> year received
-#   -> status (new, sent, …)
-#   -> description
-#   -> description_short
-#   -> copyright information
-#   -> swapping
-#   -> owner
-#   -> comment
-#
-# class Owner
-#   -> nick
-#
-# class Collection
-#   -> Postcard
-#
 from copyrighter.models import Copyright
 from django.db import models
 from django_markdown.models import MarkdownField
