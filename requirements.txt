@@ -17,7 +17,7 @@ django-markdown-filter==0.0.1
 django-markdownify==0.8.1
 django-simple-bulma==2.0.3
 django-stdimage==5.1.1
-django-tagulous==0.14.1
+django-tagulous==1.0.0
 dparse==0.5.1
 gunicorn==20.0.4
 html5lib==1.0.1
