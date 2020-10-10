@@ -9,7 +9,7 @@ from hitcount.views import HitCountDetailView
 
 class IndexView(ListView):
     model = Postcard
-    paginate_by = 100
+    paginate_by = 32
 
     def get_queryset(self):
         postcards = Postcard.objects.exclude(published="False")

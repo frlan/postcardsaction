@@ -12,8 +12,9 @@
                     <li class="is-active"><a href="#" aria-current="page">Start</a></li>
                 </ul>
             </nav>
+
             <div class="tile is-ancestor">
-            {% for item in object_list %}
+            {% for item in page_obj %}
                 <div class="tile is-parent is-3">
                     <div class="card box">
                         <header class="card-header">
@@ -36,6 +37,26 @@
             {% endif %}
             {% endfor %}
             </div>
+            {% if page_obj.paginator.num_pages > 1 %}
+            <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="pagination-previous">Start</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-previous">Vorherige</a>
+            {% else %}
+                <a class="pagination-previous" disabled>Start</a>
+                <a class="pagination-previous" disabled>Vorherige</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination-next">Nächste</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-next">Letzte</a>
+            {% else %}
+                <a class="pagination-next" disabled>Nächste</a>
+                <a class="pagination-next" disabled>Letzte</a>
+            {% endif %}
+            </nav>
+            {% endif %} {# More than one page #}
         </div>
+
+
     </div>
 {% endblock %}
