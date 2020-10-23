@@ -69,8 +69,9 @@ class Postcard(models.Model):
         blank=True,
         variations={
             "large": (1024, 1024),
-            "thumbnail": (150, 150, False),
             "medium": (600, 600),
+            "small": (300, 300),
+            "thumbnail": (150, 150, False),
         },
         delete_orphans=True,
     )
