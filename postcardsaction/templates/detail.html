@@ -8,9 +8,20 @@
 {% endblock %}
 
 {% block content %}
-
 	<div class="section">
 		<div class="container box">
+			<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            {% if object.get_next_item_ID %}
+                <a href="{% url "postcard_detail" object.get_next_item_ID %}" class="pagination-previous">Neuer</a>
+            {% else %}
+                <a class="pagination-previous" disabled>Neuer</a>
+            {% endif %}
+            {% if object.get_previous_item_ID %}
+                <a href="{% url "postcard_detail" object.get_previous_item_ID %}" class="pagination-next">Älter</a>
+            {% else %}
+                <a class="pagination-previous" disabled>Älter</a>
+            {% endif %}
+            </nav>
 			<nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
 				<ul>
 					<li><a href="{% url "index" %}">Start</a></li>

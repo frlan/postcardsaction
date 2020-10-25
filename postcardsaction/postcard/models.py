@@ -102,6 +102,24 @@ class Postcard(models.Model):
     def get_absolute_url(self):
         return reverse("postcard_detail", kwargs={"slug": str(self.slug)})
 
+    @property
+    def get_next_item_ID(self):
+        postcardlist = list(Postcard.objects.filter(published=True).order_by('-id').all())
+        pos = postcardlist.index(self)
+        if pos == 0:
+            return None
+        else:
+            return(postcardlist[pos-1].id)
+
+    @property
+    def get_previous_item_ID(self):
+        postcardlist = list(Postcard.objects.filter(published=True).order_by('-id').all())
+        pos = postcardlist.index(self)
+        if pos == len(postcardlist)-1:
+            return None
+        else:
+            return(postcardlist[pos+1].id)
+
     class Meta:
         ordering = ["-id"]
 
