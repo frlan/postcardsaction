@@ -8,123 +8,123 @@
 {% endblock %}
 
 {% block content %}
-	<div class="section">
-		<div class="container box">
-			<nav class="pagination is-centered" role="navigation" aria-label="pagination">
-            {% if object.get_next_item_ID %}
-                <a href="{% url "postcard_detail" object.get_next_item_ID %}" class="pagination-previous">Neuer</a>
-            {% else %}
-                <a class="pagination-previous" disabled>Neuer</a>
-            {% endif %}
-            {% if object.get_previous_item_ID %}
-                <a href="{% url "postcard_detail" object.get_previous_item_ID %}" class="pagination-next">Älter</a>
-            {% else %}
-                <a class="pagination-previous" disabled>Älter</a>
-            {% endif %}
-            </nav>
-			<nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
-				<ul>
-					<li><a href="{% url "index" %}">Start</a></li>
-					<li class="is-active"><a href="#" aria-current="page">{{ object.description_short }}</a></li>
-				</ul>
+        <div class="section">
+                <div class="container box">
+                        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+			{% if object.get_next_item_ID %}
+			    <a href="{% url "postcard_detail" object.get_next_item_ID %}" class="pagination-previous">Neuer</a>
+			{% else %}
+			    <a class="pagination-previous" disabled>Neuer</a>
+			{% endif %}
+			{% if object.get_previous_item_ID %}
+			    <a href="{% url "postcard_detail" object.get_previous_item_ID %}" class="pagination-next">Älter</a>
+			{% else %}
+			    <a class="pagination-previous" disabled>Älter</a>
+			{% endif %}
 			</nav>
-			<div class="card-image">
-				<header class="card-header">
-					<h2 class="title">{{ object.description_short }}</h2>
-				</header>
-				<div class="card-content">
-					<div class="columns">
-						<div class="column">
-							<figure class="image">
-								<img src="{{ object.image.medium.url }}" alt="Placeholder image">
-							</figure>
-						</div>
-						<div class="column">
-							<div class="content card-content is-size-5">
-								{{ object.description|markdownify }}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                        <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                                <ul>
+                                        <li><a href="{% url "index" %}">Start</a></li>
+                                        <li class="is-active"><a href="#" aria-current="page">{{ object.description_short }}</a></li>
+                                </ul>
+                        </nav>
+                        <div class="card-image">
+                                <header class="card-header">
+                                        <h2 class="title">{{ object.description_short }}</h2>
+                                </header>
+                                <div class="card-content">
+                                        <div class="columns">
+                                                <div class="column">
+                                                        <figure class="image">
+                                                                <img src="{{ object.image.medium.url }}" alt="Placeholder image">
+                                                        </figure>
+                                                </div>
+                                                <div class="column">
+                                                        <div class="content card-content is-size-5">
+                                                                {{ object.description|markdownify }}
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
 
-			<div class="card-content">
-				<div class="content">
-					<div class="tabs">
-						<ul>
-							<li class="tab" onclick="openTab(event,'copyright')"><a>Copyright</a></li>
-							<li class="tab" onclick="openTab(event,'postcrossing')" ><a>Postcrossing</a></li>
-							<li class="tab" onclick="openTab(event,'links')"><a>Links</a></li>
-							<li class="tab is-active" onclick="openTab(event,'tag-list')"><a>Tags</a></li>
-							<li class="tab" onclick="openTab(event,'meta')"><a>Meta</a></li>
-						</ul>
-					</div>
-					<div id="copyright" class="content-tab" style="display:none" >
-						<h2>Copyrights</h2>
-						{% if object.photo_copyright %}
-						<h3>Photo</h3>
-							{% for p in object.photo_copyright.all %}
-								{% if p.holder.url %}
-									<p><a href="{{p.holder.url}}">{{ p }}</a></p>
-								{% else %}
-									<p>{{ p }}</p>
-								{% endif %}
-							{% endfor %}
-						{% endif %}
-						{% if object.print_copyright %}
-						<h3>Print</h3>
-							{% for p in object.print_copyright.all %}
-								{% if p.holder.url %}
-									<p><a href="{{p.holder.url}}">{{ p }}</a></p>
-								{% else %}
-									<p>{{ p }}</p>
-								{% endif %}
-							{% endfor %}
-						{% endif %}
-					</div>
-					<div id="tag-list" class="content-tab" >
-						<h2>Tags</h2>
-						<p>
-						{% for tag in object.tags.all %}
-						<span class="tag is-dark">{{tag.name}}</span>
-						{% endfor %}
-					</p>
-					</div>
-					<div id="postcrossing" class="content-tab" style="display:none">
-						<h2>Postcrossing</h2>
-						{% if postcards %}
-							<ul>
-							{% for pc in postcards %}
-								{% if pc.postcrossing %}
-									<li><a href="{{pc.postcrossing.url}}">{{pc.postcrossing.pc_id}}</a></li>
-								{% endif %}
-							{% endfor %}
-							</ul>
-						{% else %}
-						<p>Keine Information verfügbar.</p>
-						{% endif %}
+                        <div class="card-content">
+                                <div class="content">
+                                        <div class="tabs">
+                                                <ul>
+                                                        <li class="tab" onclick="openTab(event,'copyright')"><a>Copyright</a></li>
+                                                        <li class="tab" onclick="openTab(event,'postcrossing')" ><a>Postcrossing</a></li>
+                                                        <li class="tab" onclick="openTab(event,'links')"><a>Links</a></li>
+                                                        <li class="tab is-active" onclick="openTab(event,'tag-list')"><a>Tags</a></li>
+                                                        <li class="tab" onclick="openTab(event,'meta')"><a>Meta</a></li>
+                                                </ul>
+                                        </div>
+                                        <div id="copyright" class="content-tab" style="display:none" >
+                                                <h2>Copyrights</h2>
+                                                {% if object.photo_copyright %}
+                                                <h3>Photo</h3>
+                                                        {% for p in object.photo_copyright.all %}
+                                                                {% if p.holder.url %}
+                                                                        <p><a href="{{p.holder.url}}">{{ p }}</a></p>
+                                                                {% else %}
+                                                                        <p>{{ p }}</p>
+                                                                {% endif %}
+                                                        {% endfor %}
+                                                {% endif %}
+                                                {% if object.print_copyright %}
+                                                <h3>Print</h3>
+                                                        {% for p in object.print_copyright.all %}
+                                                                {% if p.holder.url %}
+                                                                        <p><a href="{{p.holder.url}}">{{ p }}</a></p>
+                                                                {% else %}
+                                                                        <p>{{ p }}</p>
+                                                                {% endif %}
+                                                        {% endfor %}
+                                                {% endif %}
+                                        </div>
+                                        <div id="tag-list" class="content-tab" >
+                                                <h2>Tags</h2>
+                                                <p>
+                                                {% for tag in object.tags.all %}
+                                                <span class="tag is-dark">{{tag.name}}</span>
+                                                {% endfor %}
+                                        </p>
+                                        </div>
+                                        <div id="postcrossing" class="content-tab" style="display:none">
+                                                <h2>Postcrossing</h2>
+                                                {% if postcards %}
+                                                        <ul>
+                                                        {% for pc in postcards %}
+                                                                {% if pc.postcrossing %}
+                                                                        <li><a href="{{pc.postcrossing.url}}">{{pc.postcrossing.pc_id}}</a></li>
+                                                                {% endif %}
+                                                        {% endfor %}
+                                                        </ul>
+                                                {% else %}
+                                                <p>Keine Information verfügbar.</p>
+                                                {% endif %}
 
-					</div>
-					<div id="links" class="content-tab" style="display:none">
-					{% if object.urls.all %}
-						<h2>Links</h2>
-						<ul>
-							{% for url in object.urls.all %}
-								<li><a href="{{url.url}}">{{ url.title }}</a></li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-					</div>
-					<div id="meta" class="content-tab" style="display:none">
-						<h2>Meta</h2>
-						<ul>
-						</ul>
-						<li><strong>Veröffentlich: </strong>{{object.creation_timestamp}}</li>
-						<li><strong>Letztes Update: </strong>{{object.last_updated}}</li>
-						<li><strong>Ansichten: </strong>{% get_hit_count for object %}</li>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                        </div>
+                                        <div id="links" class="content-tab" style="display:none">
+                                        {% if object.urls.all %}
+                                                <h2>Links</h2>
+                                                <ul>
+                                                        {% for url in object.urls.all %}
+                                                                <li><a href="{{url.url}}">{{ url.title }}</a></li>
+                                                        {% endfor %}
+                                                </ul>
+                                        {% endif %}
+                                        </div>
+                                        <div id="meta" class="content-tab" style="display:none">
+                                                <h2>Meta</h2>
+                                                <ul>
+                                                </ul>
+                                                <li><strong>Veröffentlich: </strong>{{object.creation_timestamp}}</li>
+                                                <li><strong>Letztes Update: </strong>{{object.last_updated}}</li>
+                                                <li><strong>Ansichten: </strong>{% get_hit_count for object %}</li>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
 {% endblock %}
