@@ -3,8 +3,9 @@
 
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block metatags %}
-<meta property="og:title" content="{{ object.description_short }}">
-<meta property="og:image" content="{{ object.image.thumbnail.url }}">
+    <meta property="og:title" content="{{ object.description_short }}">
+    <meta property="og:image" content="{{ object.image.thumbnail.url }}">
+    <meta property="og:type" content="object"/>
 {% endblock %}
 
 {% block content %}
