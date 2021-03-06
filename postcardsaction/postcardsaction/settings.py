@@ -158,6 +158,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/all"),)
 
 MARKDOWNIFY_BLEACH = False
 
+# Forcing SSL for generated URL
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 ##################
 # LOCAL SETTINGS #
 ##################
