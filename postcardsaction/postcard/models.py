@@ -50,6 +50,17 @@ class Series(models.Model):
         verbose_name_plural = "Series"
 
 
+class Country(models.Model):
+    name = models.CharField(
+        max_length=100,
+        help_text="Name of country",
+        default="",
+    )
+
+    class Meta:
+        verbose_name_plural = "Countries"
+
+
 class Postcard(models.Model):
 
     description_short = models.CharField(
@@ -75,6 +86,12 @@ class Postcard(models.Model):
         },
         delete_orphans=True,
     )
+
+    country_of_origin = models.ForeignKey(Country,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        help_text="Country of origin if known.")
 
     creation_timestamp = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)

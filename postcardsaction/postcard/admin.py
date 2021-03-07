@@ -1,14 +1,16 @@
 from django.contrib import admin
 from django_markdown.admin import MarkdownModelAdmin
+from .models import Country
 from .models import Postcard
 from .models import PostcardItem
+from .models import Series
 from .models import Tag
 from .models import URL
-from .models import Series
 
-admin.site.register(URL)
+admin.site.register(Country)
 admin.site.register(PostcardItem)
 admin.site.register(Series)
+admin.site.register(URL)
 
 
 @admin.register(Postcard)
