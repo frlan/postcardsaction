@@ -51,10 +51,10 @@ class Series(models.Model):
 
 
 class Country(models.Model):
-    name = models.CharField(
-        max_length=100,
-        help_text="Name of country",
-        default="",
+    iso_code = models.CharField(
+        max_length=10,
+        help_text="ISO of country",
+        default=""
     )
 
     def __str__(self):
@@ -62,6 +62,7 @@ class Country(models.Model):
 
     class Meta:
         verbose_name_plural = "Countries"
+        ordering = ["iso_code"]
 
 
 class Postcard(models.Model):
