@@ -15,7 +15,7 @@ django-hitcount==1.3.3
 django-markdown-app==0.9.6
 django-markdown-filter==0.0.1
 django-markdownify==0.8.1
-django-simple-bulma==2.0.3
+django-simple-bulma==2.1.0
 django-stdimage==5.1.1
 django-tagulous==1.0.0
 dparse==0.5.1
