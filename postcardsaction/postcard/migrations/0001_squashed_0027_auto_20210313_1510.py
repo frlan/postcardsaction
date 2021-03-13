@@ -4,7 +4,6 @@ import datetime
 from django.db import migrations, models
 import django.db.models.deletion
 import django.utils.timezone
-import django_markdown.models
 import stdimage.models
 import tagulous.models.fields
 import tagulous.models.models
@@ -80,7 +79,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('description_short', models.CharField(default='', help_text='Short description of the card may be used as a teaser', max_length=100)),
-                ('description', django_markdown.models.MarkdownField(default='', help_text='Actual description for a postcard:\n            * some story behind\n            * where came it from\n            * what to see')),
+                ('description', models.TextField(default='', help_text='Actual description for a postcard:\n            * some story behind\n            * where came it from\n            * what to see')),
                 ('image', stdimage.models.StdImageField(blank=True, upload_to='img/postcardimages')),
                 ('photo_copyright', models.ManyToManyField(related_name='photo', to='copyrighter.Copyright')),
                 ('print_copyright', models.ManyToManyField(related_name='print', to='copyrighter.Copyright')),

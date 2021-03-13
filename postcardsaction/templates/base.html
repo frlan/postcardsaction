@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load staticfiles %}{% load static %}{% load i18n %}{% load markdownify %}
+<!DOCTYPE html>{% load static %}{% load i18n %}{% load markdownify %}
 <html lang={% trans "en" %}>
   <head>
     <meta charset="utf-8" />
@@ -11,21 +11,22 @@
     {% block metatags %}{% endblock %}
     {% block stylesheets %}{% endblock %}
     <title>{% block head_title %}Postkarten Sammlung{% endblock %}</title>
+
     <script>
     /* Inspired by
      https://codepen.io/t7team/pen/ZowdRN */
     function openTab(evt, tabName) {
-    var i, x, tablinks;
-    x = document.getElementsByClassName("content-tab");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tab");
-    for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " is-active";
+        var i, x, tablinks;
+        x = document.getElementsByClassName("content-tab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " is-active";
     }
     </script>
 
