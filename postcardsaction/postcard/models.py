@@ -1,6 +1,6 @@
 from copyrighter.models import Copyright
 from django.db import models
-from django_markdown.models import MarkdownField
+# from django_markdown.models import MarkdownField
 from django.urls import reverse
 from postcrossing.models import PCPostCard
 from stdimage import StdImageField, JPEGField
@@ -37,7 +37,7 @@ class URL(models.Model):
 
 class Series(models.Model):
     title = models.CharField(max_length=100)
-    description = MarkdownField(default="", blank=True)
+    description = models.TextField(default="", blank=True)
 
     urls = models.ManyToManyField(URL,
                                   related_name="series_links",
@@ -72,7 +72,7 @@ class Postcard(models.Model):
         help_text="Short description of the card may be used as a teaser",
         default="",
     )
-    description = MarkdownField(
+    description = models.TextField(
         default="",
         help_text="""Actual description for a postcard:
             * some story behind

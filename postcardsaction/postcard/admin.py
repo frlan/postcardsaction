@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django_markdown.admin import MarkdownModelAdmin
+#from django_markdown.admin import MarkdownModelAdmin
 from .models import Country
 from .models import Postcard
 from .models import PostcardItem

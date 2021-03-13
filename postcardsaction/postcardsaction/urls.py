@@ -29,7 +29,7 @@ urlpatterns = [
     url(r"^$", IndexView.as_view(template_name="index.html"), name="index"),
     url(r'^feed/$', LatestPostcardsFeed(), name='news_feed'),
     path("admin/", admin.site.urls),
-    path("markdown/", include("django_markdown.urls")),
+#    path("markdown/", include("django_markdown.urls")),
     url(
         r"^(?P<pk>[\w]+)/$",
         PostcardDetailView.as_view(),

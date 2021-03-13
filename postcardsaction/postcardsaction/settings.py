@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
-    "django_markdown",
+#    "django_markdown",
     "markdownify",
     "postcard",
     "stdimage",
