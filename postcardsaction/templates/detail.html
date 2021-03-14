@@ -3,8 +3,11 @@
 
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block metatags %}
-    <meta property="og:title" content="{{ object.description_short }}">
-    <meta property="og:image" content="{{ object.image.thumbnail.url }}">
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:alt" content="Picture of {{ object.description_short }}-postcard" />
+    <meta name="twitter:image" content="{{request.scheme}}://{{request.META.HTTP_HOST }}{{ object.image.small.url }}"/>
+    <meta property="og:image" content="{{ object.image.thumbnail.url }}"/>
+    <meta property="og:title" content="{{ object.description_short }}"/>
     <meta property="og:type" content="object"/>
 {% endblock %}
 
