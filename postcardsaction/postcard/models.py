@@ -67,6 +67,12 @@ class Country(models.Model):
 
 class Postcard(models.Model):
 
+    subtitle = models.CharField(
+        max_length=100,
+        help_text="A subtitle for the postcard",
+        null=True,
+        blank=True)
+
     description_short = models.CharField(
         max_length=100,
         help_text="Short description of the card may be used as a teaser",
