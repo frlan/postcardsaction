@@ -4,11 +4,11 @@
 {% block head_title %} »{{ object.description_short }}« {% endblock %}
 {% block metatags %}
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="{{ object.description_short }}" />
+    <meta name="twitter:title" content="{{ object.title }}" />
     <meta name="twitter:image:alt" content="Picture of {{ object.description_short }}-postcard" />
     <meta name="twitter:image" content="{{request.scheme}}://{{request.META.HTTP_HOST }}{{ object.image.small.url }}"/>
     <meta property="og:image" content="{{ object.image.thumbnail.url }}"/>
-    <meta property="og:title" content="{{ object.description_short }}"/>
+    <meta property="og:title" content="{{ object.title }}"/>
     <meta property="og:type" content="object"/>
 {% endblock %}
 
@@ -30,12 +30,12 @@
                         <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
                                 <ul>
                                         <li><a href="{% url "index" %}">Start</a></li>
-                                        <li class="is-active"><a href="#" aria-current="page">{{ object.description_short }}</a></li>
+                                        <li class="is-active"><a href="#" aria-current="page">{{ object.title }}</a></li>
                                 </ul>
                         </nav>
                         <div class="card-image">
                                 <header class="card-header">
-                                        <h2 class="title">{{ object.description_short }}</h2>
+                                        <h2 class="title">{{ object.title }}</h2>
                                 </header>
                                 <div class="card-content">
                                         <div class="columns">

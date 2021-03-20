@@ -67,17 +67,18 @@ class Country(models.Model):
 
 class Postcard(models.Model):
 
+    title = models.CharField(
+        max_length=100,
+        help_text="Title of the postcard",
+        default="",
+    )
+
     subtitle = models.CharField(
         max_length=100,
         help_text="A subtitle for the postcard",
         null=True,
         blank=True)
 
-    description_short = models.CharField(
-        max_length=100,
-        help_text="Short description of the card may be used as a teaser",
-        default="",
-    )
     description = models.TextField(
         default="",
         help_text="""Actual description for a postcard:
@@ -124,7 +125,7 @@ class Postcard(models.Model):
                                     blank=True)
 
     def __str__(self):
-        return self.description_short
+        return self.title
 
     def get_absolute_url(self):
         return reverse("postcard_detail", kwargs={"slug": str(self.slug)})

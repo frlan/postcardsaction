@@ -15,10 +15,11 @@ admin.site.register(URL)
 
 @admin.register(Postcard)
 class PostcardAdmin(admin.ModelAdmin):
-    list_display = ["description_short", "id", "published"]
-    search_fields = ("description_short", )
+    list_display = ["title", "id", "published"]
+    search_fields = ("title", )
 
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ["name"]
+

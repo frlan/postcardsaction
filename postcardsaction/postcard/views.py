@@ -44,7 +44,7 @@ class LatestPostcardsFeed(Feed):
         return Postcard.objects.exclude(published="False")
 
     def item_title(self, item):
-        return item.description_short
+        return item.title
 
     def item_description(self, item):
         return item.description

@@ -18,12 +18,12 @@
                 <div class="tile is-parent is-3">
                     <div class="card box">
                         <header class="card-header">
-                            <p class="card-header-title has-text-dark"><a class="has-text-dark" href="{% url "postcard_detail" item.id %}">{{ item.description_short }} </a></p>
+                            <p class="card-header-title has-text-dark"><a class="has-text-dark" href="{% url "postcard_detail" item.id %}">{{ item.title }} </a></p>
                         </header>
                         <div class="card-content">
                             <figure class="image">
                                 <a href="{% url "postcard_detail" item.id %}">
-<img src="{{ item.image.small.url }}" alt="{{ item.description_short }}"> </a>
+<img src="{{ item.image.small.url }}" alt="{{ item.title }}"> </a>
                             </figure>
                         </div>
                         <footer class="card-footer">
