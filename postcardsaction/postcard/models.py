@@ -34,7 +34,6 @@ class URL(models.Model):
     class Meta:
         ordering = ["title"]
 
-
 class Series(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="", blank=True)
@@ -42,6 +41,10 @@ class Series(models.Model):
     urls = models.ManyToManyField(URL,
                                   related_name="series_links",
                                   blank=True)
+    publisher = models.ManyToManyField(Copyright,
+                                       related_name="publisher",
+                                       blank=True)
+
     def __str__(self):
         return self.title
 
