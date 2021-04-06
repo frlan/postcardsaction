@@ -10,3 +10,5 @@ Pillow
 safety==1.10.3
 # No other database to used in production anyway ;)
 psycopg2
+# For security
+urllib3>=1.26.4
