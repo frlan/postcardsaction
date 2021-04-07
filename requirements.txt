@@ -1,13 +1,13 @@
 Django
-django-hitcount==1.3.3
+django-hitcount
 django-markdown-filter
 django-markdownify
 django-simple-bulma
-django-stdimage==5.2.0
-django-tagulous==1.1.0
-gunicorn==20.0.4
+django-stdimage
+django-tagulous
+gunicorn
 Pillow
-safety==1.10.3
+safety
 # No other database to used in production anyway ;)
 psycopg2
 # For security
