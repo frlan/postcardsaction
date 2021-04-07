@@ -21,6 +21,10 @@ class Holder(models.Model):
         blank=True,
         help_text="May contain free-text address data for the copyright holder"
     )
+    description = models.TextField(
+        blank=True,
+        help_text="Free text form to tell something about the the holder")
+
 
     def __str__(self):
         if self.org_name:
