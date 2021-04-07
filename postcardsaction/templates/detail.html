@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}{% load markdownify %}{% load hitcount_tags %}
 
-{% block head_title %} »{{ object.description_short }}« {% endblock %}
+{% block head_title %} »{{ object.title }}« {% endblock %}
 {% block metatags %}
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content="{{ object.title }}" />
