@@ -156,15 +156,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/all"),)
 
 # MARKDOWN_FILTER_WHITELIST_TAGS = ["a", "p", "code", "h1"]
 
-MARKDOWNIFY_BLEACH = False
-
 MARKDOWNIFY = {
     "default": {
         "MARKDOWN_EXTENSIONS": [
             'markdown.extensions.fenced_code',
             'markdown.extensions.extra',
             'markdown.extensions.nl2br'
-        ]
+        ],
+        "BLEACH": False
     }
 }
 
