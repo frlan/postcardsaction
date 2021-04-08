@@ -158,6 +158,16 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/all"),)
 
 MARKDOWNIFY_BLEACH = False
 
+MARKDOWNIFY = {
+    "default": {
+        "MARKDOWN_EXTENSIONS": [
+            'markdown.extensions.fenced_code',
+            'markdown.extensions.extra',
+            'markdown.extensions.nl2br'
+        ]
+    }
+}
+
 # Forcing SSL for generated URL
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
