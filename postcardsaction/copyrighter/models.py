@@ -9,7 +9,7 @@ class Holder(models.Model):
 
     name = models.CharField(
         max_length=100, help_text="Ust it for (transcripted) writing of name.")
-    org_name = models.CharField(
+    orig_name = models.CharField(
         max_length=100,
         help_text="Use for native writing of the name e.g. in Cyrillic.",
         blank=True,
@@ -28,7 +28,7 @@ class Holder(models.Model):
 
     def __str__(self):
         if self.org_name:
-            return "{} ({})".format(self.org_name, self.name)
+            return "{} ({})".format(self.orig_name, self.name)
         else:
             return self.name
 
