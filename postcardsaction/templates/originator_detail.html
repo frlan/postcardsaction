@@ -20,9 +20,9 @@
 							<h3>Beschreibung</h3>
 								{{ object.description|markdownify}}
 							<h3>Kontakt</h3>
-							{% if object.url %} <a href="{{ object.url}}">{{ object.url}}</a>{% endif %}
-							{% if object.phone %}{{object.phone}}{% endif %}
-							{% if object.address %}{{ object.address|markdownify}}{% endif %}
+							{% if object.url %} <p><a href="{{ object.url}}"></p>{{ object.url}}</a>{% endif %}
+							{% if object.phone %}<p>{{object.phone}}</p>{% endif %}
+							{% if object.address %}<p>{{ object.address|markdownify}}</p>{% endif %}
 
 						</div>
 					</div>
