@@ -24,15 +24,18 @@ from django.views.generic.base import TemplateView
 from postcard.views import IndexView
 from postcard.views import PostcardDetailView
 from postcard.views import LatestPostcardsFeed
+from postcard.views import OriginatorDetailView
 
 urlpatterns = [
     url(r"^$", IndexView.as_view(template_name="index.html"), name="index"),
     url(r'^feed/$', LatestPostcardsFeed(), name='news_feed'),
     path("admin/", admin.site.urls),
-#    path("markdown/", include("django_markdown.urls")),
     url(
-        r"^(?P<pk>[\w]+)/$",
-        PostcardDetailView.as_view(),
-        name="postcard_detail",
+        r"^(?P<pk>[\w]+)/$", PostcardDetailView.as_view(), name="postcard_detail",
+    ),
+    url(
+        r"^o/(?P<pk>[\w]+)/$",
+            OriginatorDetailView.as_view(),
+            name="originator_detail"
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

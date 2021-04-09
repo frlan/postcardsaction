@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from hitcount.views import HitCountDetailView
+from copyrighter.models import Holder
 
 
 class IndexView(ListView):
@@ -31,6 +32,19 @@ class PostcardDetailView(HitCountDetailView):
         context = super(PostcardDetailView, self).get_context_data(**kwargs)
         if self.object.postcarditem_set.all():
             context['postcards'] = self.object.postcarditem_set.all()
+        return context
+
+
+class OriginatorDetailView(DetailView):
+    model = Holder
+    template_name = "originator_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(OriginatorDetailView, self).get_context_data(**kwargs)
+        context['postcards'] = (
+            Postcard.objects.filter(photo_copyright__holder__id = self.object.id) |
+            Postcard.objects.filter(print_copyright__holder__id = self.object.id)
+        )
         return context
 
 
