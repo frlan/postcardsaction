@@ -175,7 +175,7 @@ class PostcardItem(models.Model):
 
     def __str__(self):
         if self.postcrossing:
-            return "{} ({})".format(self.postcard.description_short,
+            return "{} ({})".format(self.postcard.title,
                                     self.postcrossing.pc_id)
         else:
             return self.postcard.description_short
