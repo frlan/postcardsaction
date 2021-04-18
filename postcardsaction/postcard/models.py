@@ -178,7 +178,7 @@ class PostcardItem(models.Model):
             return "{} ({})".format(self.postcard.title,
                                     self.postcrossing.pc_id)
         else:
-            return self.postcard.description_short
+            return self.postcard.title
 
     class Meta:
         ordering = ["id"]
