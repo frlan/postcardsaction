@@ -1,8 +1,7 @@
 Django
 django-hitcount
-django-markdown-filter
 django-markdownify
-django-simple-bulma
+django-simple-bulma==2.2.0
 django-stdimage
 django-tagulous
 gunicorn
