@@ -44,6 +44,18 @@ class Series(models.Model):
     publisher = models.ManyToManyField(Copyright,
                                        related_name="publisher",
                                        blank=True)
+    logo = StdImageField(
+        upload_to="img/series",
+        blank=True,
+        variations={
+            "large": (1024, 1024),
+            "medium": (600, 600),
+            "small": (300, 300),
+            "thumbnail": (150, 150, False),
+        },
+        delete_orphans=True,
+    )
+
 
     def __str__(self):
         return self.title
