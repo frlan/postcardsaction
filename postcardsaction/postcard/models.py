@@ -34,6 +34,7 @@ class URL(models.Model):
     class Meta:
         ordering = ["title"]
 
+
 class Series(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="", blank=True)
@@ -111,6 +112,15 @@ class Postcard(models.Model):
             "thumbnail": (150, 150, False),
         },
         delete_orphans=True,
+    )
+
+    backside_description_text = models.TextField(
+        default="",
+        blank=True,
+        null=True,
+        help_text=(
+            "The text on the back of a postcard explaining "
+            "what's printed there.")
     )
 
     country_of_origin = models.ForeignKey(Country,
