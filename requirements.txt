@@ -1,4 +1,4 @@
-Django<4.0
+Django
 django-hitcount
 django-markdownify
 django-simple-bulma==2.2.0
