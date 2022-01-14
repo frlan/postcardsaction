@@ -10,6 +10,7 @@ import tagulous.models
 
 
 class Tag(tagulous.models.TagTreeModel):
+
     class TagMeta:
         force_lowercase = False
 
@@ -102,6 +103,7 @@ class Postcard(models.Model):
             * where came it from
             * what to see""",
     )
+
     image = StdImageField(
         upload_to="img/postcardimages",
         blank=True,
@@ -112,6 +114,16 @@ class Postcard(models.Model):
             "thumbnail": (150, 150, False),
         },
         delete_orphans=True,
+    )
+
+    image_description = models.TextField(
+        blank=True,
+        null=True,
+        help_text="""
+            A more formal description of the image for visual
+            handicapped people -- a description that might not fit to
+            the main text
+        """,
     )
 
     backside_description_text = models.TextField(
@@ -133,6 +145,7 @@ class Postcard(models.Model):
     last_updated = models.DateTimeField(auto_now=True)
 
     tags = tagulous.models.TagField(to=Tag)
+
     photo_copyright = models.ManyToManyField(Copyright, related_name="photo")
     print_copyright = models.ManyToManyField(Copyright, related_name="print")
 
