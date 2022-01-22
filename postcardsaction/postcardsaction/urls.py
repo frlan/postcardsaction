@@ -8,7 +8,6 @@ from postcard.views import IndexView
 from postcard.views import PostcardDetailView
 from postcard.views import LatestPostcardsFeed
 from postcard.views import OriginatorDetailView
-from postcard.views import OriginatorIndexView
 
 
 urlpatterns = [
