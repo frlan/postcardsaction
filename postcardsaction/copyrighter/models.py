@@ -44,6 +44,11 @@ class Licence(models.Model):
     slug = models.CharField(max_length=30)
     name = models.CharField(max_length=200)
     description = models.TextField(default="", blank=True)
+    commercial = models.BooleanField(
+        default=False,
+        help_text=(
+            'Whether allowed to use it commercial as e.g. for '
+            'Public Domain or CC without NC-attribution'))
 
     def __str__(self):
         return self.slug
