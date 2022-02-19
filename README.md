@@ -2,6 +2,10 @@
 
 A Django based kind of a postcard-picture-blog
 
+## Chat/Contact
+
+There is a matrix chat at #postcards:mtxsrv.org available
+
 ## Installation
 
 Quick'n'dirty installation
