@@ -19,3 +19,10 @@ Quick'n'dirty installation
     $ ./manage.py createsuperuser
     $ ./manage.py runserver
 
+## Database structure
+
+Created with
+
+    ./manage.py graph_models -a -g -o ../erd.png 
+
+![ER-Diagramm](erd.png)

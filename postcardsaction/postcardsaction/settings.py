@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "postcrossing",
     "hitcount",
     "django_simple_bulma",
+    "django_extensions"
 ]
 
 MIDDLEWARE = [
