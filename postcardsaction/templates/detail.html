@@ -13,18 +13,50 @@
 {% endblock %}
 
 {% block content %}
+    {% if originator %}
+        <div class="container box">
+            <div class="tile is-parent">
+                <div class="card">
+                    <header class="card-header">
+                        <h2 class="title">… Filter</h2>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <p>Ein Filter ist aktiv für Karten von {{originator.name}}.</p>
+                            <ul>
+                                <li> <a href="{% url "postcard_detail" object.id %}"> Ohne Filter</a> </li>
+                                <li> <a href="{% url "originator_detail" originator.id %}"> Alle Karten von {{originator.name}} </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
         <div class="section">
                 <div class="container box">
                         <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-                        {% if object.get_next_item_ID %}
-                            <a href="{% url "postcard_detail" object.get_next_item_ID %}" class="pagination-previous">Neuer</a>
+                        {% if originator %}
+                            {% if get_next_item_ID and get_next_item_ID != object.id%}
+                                <a href="{% url "postcard_detail" get_next_item_ID originator.id %}" class="pagination-previous">Neuer</a>
+                            {% else %}
+                                <a class="pagination-previous" disabled>Neuer</a>
+                            {% endif %}
+                            {% if get_previous_item_ID and get_previous_item_ID != object.id %}
+                                <a href="{% url "postcard_detail" get_previous_item_ID originator.id %}" class="pagination-next">Älter</a>
+                            {% else %}
+                                <a class="pagination-previous" disabled>Älter</a>
+                            {% endif %}
                         {% else %}
-                            <a class="pagination-previous" disabled>Neuer</a>
-                        {% endif %}
-                        {% if object.get_previous_item_ID %}
-                            <a href="{% url "postcard_detail" object.get_previous_item_ID %}" class="pagination-next">Älter</a>
-                        {% else %}
-                            <a class="pagination-previous" disabled>Älter</a>
+                            {% if get_next_item_ID and get_next_item_ID != object.id%}
+                                <a href="{% url "postcard_detail" get_next_item_ID %}" class="pagination-previous">Neuer</a>
+                            {% else %}
+                                <a class="pagination-previous" disabled>Neuer</a>
+                            {% endif %}
+                            {% if get_previous_item_ID and get_previous_item_ID != object.id %}
+                                <a href="{% url "postcard_detail" get_previous_item_ID %}" class="pagination-next">Älter</a>
+                            {% else %}
+                                <a class="pagination-previous" disabled>Älter</a>
+                            {% endif %}
                         {% endif %}
                         </nav>
                         <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
@@ -73,21 +105,13 @@
                                                 {% if object.photo_copyright %}
                                                 <h3>Photo</h3>
                                                         {% for p in object.photo_copyright.all %}
-                                                                {% if p.holder.url %}
-                                                                        <p><a href="{{p.holder.url}}">{{ p }}</a></p>
-                                                                {% else %}
-                                                                        <p>{{ p }}</p>
-                                                                {% endif %}
+                                                                <p><a href="{% url "originator_detail" p.holder.id %}">{{ p }}</a></p>
                                                         {% endfor %}
                                                 {% endif %}
                                                 {% if object.print_copyright %}
                                                 <h3>Print</h3>
                                                         {% for p in object.print_copyright.all %}
-                                                                {% if p.holder.url %}
-                                                                        <p><a href="{{p.holder.url}}">{{ p }}</a></p>
-                                                                {% else %}
-                                                                        <p>{{ p }}</p>
-                                                                {% endif %}
+                                                                <p><a href="{% url "originator_detail" p.holder.id %}">{{ p }}</a></p>
                                                         {% endfor %}
                                                 {% endif %}
                                         </div>

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
-#    "django_markdown",
+    #    "django_markdown",
     "markdownify",
     "postcard",
     "stdimage",
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "postcrossing",
     "hitcount",
     "django_simple_bulma",
-    "django_extensions"
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -60,11 +60,11 @@ MIDDLEWARE = [
 ]
 
 STATICFILES_FINDERS = [
-  # First add the two default Finders, since this will overwrite the default.
-  'django.contrib.staticfiles.finders.FileSystemFinder',
-  'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-  # Now add our custom SimpleBulma one.
-  'django_simple_bulma.finders.SimpleBulmaFinder',
+    # First add the two default Finders, since this will overwrite the default.
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    # Now add our custom SimpleBulma one.
+    "django_simple_bulma.finders.SimpleBulmaFinder",
 ]
 
 ROOT_URLCONF = "postcardsaction.urls"
@@ -110,12 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
     },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 
@@ -160,20 +156,20 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/all"),)
 MARKDOWNIFY = {
     "default": {
         "MARKDOWN_EXTENSIONS": [
-            'markdown.extensions.fenced_code',
-            'markdown.extensions.extra',
-            'markdown.extensions.nl2br'
+            "markdown.extensions.fenced_code",
+            "markdown.extensions.extra",
+            "markdown.extensions.nl2br",
         ],
-        "BLEACH": False
+        "BLEACH": False,
     }
 }
 
 # Forcing SSL for generated URL
 USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 ##################
 # LOCAL SETTINGS #
@@ -185,4 +181,3 @@ try:
     from .local_settings import *  # pylint: disable=W0401,W0614
 except ImportError:
     pass
-

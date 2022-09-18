@@ -1,5 +1,6 @@
 from copyrighter.models import Copyright
 from django.db import models
+
 # from django_markdown.models import MarkdownField
 from django.urls import reverse
 from postcrossing.models import PCPostCard
@@ -7,10 +8,10 @@ from stdimage import StdImageField, JPEGField
 import datetime
 import django.utils.timezone
 import tagulous.models
+from django.db.models import Q
 
 
 class Tag(tagulous.models.TagTreeModel):
-
     class TagMeta:
         force_lowercase = False
 
@@ -40,12 +41,8 @@ class Series(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="", blank=True)
 
-    urls = models.ManyToManyField(URL,
-                                  related_name="series_links",
-                                  blank=True)
-    publisher = models.ManyToManyField(Copyright,
-                                       related_name="publisher",
-                                       blank=True)
+    urls = models.ManyToManyField(URL, related_name="series_links", blank=True)
+    publisher = models.ManyToManyField(Copyright, related_name="publisher", blank=True)
     logo = StdImageField(
         upload_to="img/series",
         blank=True,
@@ -58,7 +55,6 @@ class Series(models.Model):
         delete_orphans=True,
     )
 
-
     def __str__(self):
         return self.title
 
@@ -68,11 +64,7 @@ class Series(models.Model):
 
 
 class Country(models.Model):
-    iso_code = models.CharField(
-        max_length=10,
-        help_text="ISO of country",
-        default=""
-    )
+    iso_code = models.CharField(max_length=10, help_text="ISO of country", default="")
 
     def __str__(self):
         return self.iso_code
@@ -91,10 +83,8 @@ class Postcard(models.Model):
     )
 
     subtitle = models.CharField(
-        max_length=100,
-        help_text="A subtitle for the postcard",
-        null=True,
-        blank=True)
+        max_length=100, help_text="A subtitle for the postcard", null=True, blank=True
+    )
 
     description = models.TextField(
         default="",
@@ -131,15 +121,17 @@ class Postcard(models.Model):
         blank=True,
         null=True,
         help_text=(
-            "The text on the back of a postcard explaining "
-            "what's printed there.")
+            "The text on the back of a postcard explaining " "what's printed there."
+        ),
     )
 
-    country_of_origin = models.ForeignKey(Country,
+    country_of_origin = models.ForeignKey(
+        Country,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        help_text="Country of origin if known.")
+        help_text="Country of origin if known.",
+    )
 
     creation_timestamp = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
@@ -149,42 +141,21 @@ class Postcard(models.Model):
     photo_copyright = models.ManyToManyField(Copyright, related_name="photo")
     print_copyright = models.ManyToManyField(Copyright, related_name="print")
 
-    urls = models.ManyToManyField(URL,
-                                  related_name="further_information",
-                                  blank=True)
+    urls = models.ManyToManyField(URL, related_name="further_information", blank=True)
 
     published = models.BooleanField(
-        default=False, help_text="Whether this postcard is visible.")
-    publishing_date = models.DateTimeField(default=django.utils.timezone.now,
-                                           null=True,
-                                           blank=True)
-    series = models.ManyToManyField(Series,
-                                    related_name="series_member",
-                                    blank=True)
+        default=False, help_text="Whether this postcard is visible."
+    )
+    publishing_date = models.DateTimeField(
+        default=django.utils.timezone.now, null=True, blank=True
+    )
+    series = models.ManyToManyField(Series, related_name="series_member", blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse("postcard_detail", kwargs={"slug": str(self.slug)})
-
-    @property
-    def get_next_item_ID(self):
-        postcardlist = list(Postcard.objects.filter(published=True).order_by('-id').all())
-        pos = postcardlist.index(self)
-        if pos == 0:
-            return None
-        else:
-            return(postcardlist[pos-1].id)
-
-    @property
-    def get_previous_item_ID(self):
-        postcardlist = list(Postcard.objects.filter(published=True).order_by('-id').all())
-        pos = postcardlist.index(self)
-        if pos == len(postcardlist)-1:
-            return None
-        else:
-            return(postcardlist[pos+1].id)
 
     class Meta:
         ordering = ["-id"]
@@ -193,25 +164,24 @@ class Postcard(models.Model):
 class PostcardItem(models.Model):
 
     postcard = models.ForeignKey(Postcard, on_delete=models.CASCADE)
-    postcrossing = models.ForeignKey(PCPostCard,
-                                     on_delete=models.CASCADE,
-                                     null=True,
-                                     blank=True)
+    postcrossing = models.ForeignKey(
+        PCPostCard, on_delete=models.CASCADE, null=True, blank=True
+    )
     swapping = models.BooleanField(
         default=False,
         help_text="Whether this postcard is free for private swapping",
     )
     year_received = models.DateField("Date", default=datetime.date.today)
     year_verified = models.BooleanField(
-        default=True, help_text="Whether the year of receiving is verified")
+        default=True, help_text="Whether the year of receiving is verified"
+    )
 
     creation_timestamp = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         if self.postcrossing:
-            return "{} ({})".format(self.postcard.title,
-                                    self.postcrossing.pc_id)
+            return "{} ({})".format(self.postcard.title, self.postcrossing.pc_id)
         else:
             return self.postcard.title
 

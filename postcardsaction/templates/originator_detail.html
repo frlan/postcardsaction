@@ -10,24 +10,29 @@
 
     <div class="section">
         <div class="container box">
-			<div class="tile is-parent">
-				<div class="card">
-					<header class="card-header">
-						<h2 class="title">{{ object.name }}</h2>
+            <div class="tile is-parent">
+                <div class="card">
+                    <header class="card-header">
+                        <h2 class="title">{{ object.name }}</h2>
                     </header>
-					<div class="card-content">
-						<div class="content">
-							<h3>Beschreibung</h3>
-								{{ object.description|markdownify}}
-							<h3>Kontakt</h3>
-							{% if object.url %} <p><a href="{{ object.url}}"></p>{{ object.url}}</a>{% endif %}
-							{% if object.phone %}<p>{{object.phone}}</p>{% endif %}
-							{% if object.address %}<p>{{ object.address|markdownify}}</p>{% endif %}
-
-						</div>
-					</div>
-				</div>
-			</div>
+                    <div class="card-content">
+                        <div class="content">
+                            {% if object.description %}
+                            <h3>Beschreibung</h3>
+                                {{ object.description|markdownify}}
+                            {% endif %}
+                            {% if object.url or object.phone or object.address %}
+                            <h3>Kontakt</h3>
+                            <ul>
+                                {% if object.url %}<li><strong>Homepage:</strong> <a href="{{ object.url}}">{{ object.url}}</a></li>{% endif %}
+                                {% if object.phone %}<li><strong>Phone:</strong> {{object.phone}}</li>{% endif %}
+                                {% if object.address %}<li><strong>Address:</strong> {{ object.address|markdownify}}</li>{% endif %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="tile is-ancestor">
             {% for item in postcards %}
@@ -38,7 +43,7 @@
                         </header>
                         <div class="card-content">
                             <figure class="image">
-                                <a href="{% url "postcard_detail" item.id %}">
+                                <a href="{% url "postcard_detail" item.id object.id %}">
 <img src="{{ item.image.small.url }}" alt="{{ item.title }}"> </a>
                             </figure>
                         </div>
@@ -53,6 +58,6 @@
             {% endif %}
             {% endfor %}
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 {% endblock %}

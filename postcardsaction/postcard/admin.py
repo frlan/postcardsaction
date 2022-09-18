@@ -1,5 +1,6 @@
 from django.contrib import admin
-#from django_markdown.admin import MarkdownModelAdmin
+
+# from django_markdown.admin import MarkdownModelAdmin
 from .models import Country
 from .models import Postcard
 from .models import PostcardItem
@@ -16,10 +17,9 @@ admin.site.register(URL)
 @admin.register(Postcard)
 class PostcardAdmin(admin.ModelAdmin):
     list_display = ["title", "id", "published"]
-    search_fields = ("title", )
+    search_fields = ("title",)
 
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ["name"]
-
