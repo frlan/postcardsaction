@@ -6,25 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('copyrighter', '0006_copyright_year'),
+        ("copyrighter", "0006_copyright_year"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='holder',
-            name='org_name',
+            model_name="holder",
+            name="org_name",
             field=models.CharField(
                 blank=True,
-                help_text=
-                'Use for native writing of the name e.g. in Cyrillic.',
+                help_text="Use for native writing of the name e.g. in Cyrillic.",
                 max_length=100,
-                null=True),
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='holder',
-            name='name',
+            model_name="holder",
+            name="name",
             field=models.CharField(
-                help_text='Ust it for (transcripted) writing of name.',
-                max_length=100),
+                help_text="Ust it for (transcripted) writing of name.", max_length=100
+            ),
         ),
     ]

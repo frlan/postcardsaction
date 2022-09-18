@@ -6,23 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('copyrighter', '0004_auto_20200505_1651'),
+        ("copyrighter", "0004_auto_20200505_1651"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='holder',
-            name='address',
-            field=models.TextField(blank=True, help_text='May contain free-text address data for the copyright holder'),
+            model_name="holder",
+            name="address",
+            field=models.TextField(
+                blank=True,
+                help_text="May contain free-text address data for the copyright holder",
+            ),
         ),
         migrations.AddField(
-            model_name='holder',
-            name='email',
+            model_name="holder",
+            name="email",
             field=models.EmailField(blank=True, max_length=254),
         ),
         migrations.AddField(
-            model_name='holder',
-            name='phone',
+            model_name="holder",
+            name="phone",
             field=models.CharField(blank=True, max_length=50),
         ),
     ]

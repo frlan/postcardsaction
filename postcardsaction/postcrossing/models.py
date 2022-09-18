@@ -23,14 +23,12 @@ class PCPostCard(models.Model):
         max_length=100,
         unique=True,
     )
-    from_user = models.ForeignKey(PCUser,
-                                  on_delete=models.SET_NULL,
-                                  related_name="from_user",
-                                  null=True)
-    to_user = models.ForeignKey(PCUser,
-                                on_delete=models.SET_NULL,
-                                related_name="to_user",
-                                null=True)
+    from_user = models.ForeignKey(
+        PCUser, on_delete=models.SET_NULL, related_name="from_user", null=True
+    )
+    to_user = models.ForeignKey(
+        PCUser, on_delete=models.SET_NULL, related_name="to_user", null=True
+    )
 
     def __str__(self):
         return self.pc_id

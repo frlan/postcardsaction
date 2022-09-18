@@ -11,6 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name="copyright", options={"ordering": ["holder"]},
+            name="copyright",
+            options={"ordering": ["holder"]},
         ),
     ]

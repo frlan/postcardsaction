@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcrossing', '0006_auto_20200413_1727'),
+        ("postcrossing", "0006_auto_20200413_1727"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='pcpostcard',
-            options={'ordering': ['pc_id'], 'verbose_name': 'Postcrossing Card'},
+            name="pcpostcard",
+            options={"ordering": ["pc_id"], "verbose_name": "Postcrossing Card"},
         ),
     ]

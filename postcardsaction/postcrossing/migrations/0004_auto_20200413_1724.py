@@ -11,6 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterModelOptions(
-            name="pcpostcard", options={"ordering": ["-pc_id"]},
+            name="pcpostcard",
+            options={"ordering": ["-pc_id"]},
         ),
     ]

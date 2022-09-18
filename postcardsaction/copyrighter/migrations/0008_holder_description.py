@@ -6,13 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('copyrighter', '0007_auto_20200925_2159'),
+        ("copyrighter", "0007_auto_20200925_2159"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='holder',
-            name='description',
-            field=models.TextField(blank=True, help_text='Free text form to tell something about the the holder'),
+            model_name="holder",
+            name="description",
+            field=models.TextField(
+                blank=True,
+                help_text="Free text form to tell something about the the holder",
+            ),
         ),
     ]

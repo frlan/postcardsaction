@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('copyrighter', '0005_auto_20200526_2013'),
+        ("copyrighter", "0005_auto_20200526_2013"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='copyright',
-            name='year',
+            model_name="copyright",
+            name="year",
             field=models.IntegerField(blank=True, null=True),
         ),
     ]
