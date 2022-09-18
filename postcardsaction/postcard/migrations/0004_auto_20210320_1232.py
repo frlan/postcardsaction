@@ -6,17 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcard', '0003_postcard_subtitle'),
+        ("postcard", "0003_postcard_subtitle"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='postcard',
-            old_name='description_short',
-            new_name='title'),
+            model_name="postcard", old_name="description_short", new_name="title"
+        ),
         migrations.AlterField(
-            model_name='postcard',
-            name='title',
-            field=models.CharField(default='', help_text='Title of the postcard', max_length=100),
+            model_name="postcard",
+            name="title",
+            field=models.CharField(
+                default="", help_text="Title of the postcard", max_length=100
+            ),
         ),
     ]

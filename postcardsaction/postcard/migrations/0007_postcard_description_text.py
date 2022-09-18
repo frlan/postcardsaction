@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcard', '0006_series_logo'),
+        ("postcard", "0006_series_logo"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='postcard',
-            name='description_text',
-            field=models.TextField(blank=True, default='', help_text="The text on the back of a postcard explaining what's printed there.", null=True),
+            model_name="postcard",
+            name="description_text",
+            field=models.TextField(
+                blank=True,
+                default="",
+                help_text="The text on the back of a postcard explaining what's printed there.",
+                null=True,
+            ),
         ),
     ]

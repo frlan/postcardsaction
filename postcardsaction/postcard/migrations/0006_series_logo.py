@@ -7,13 +7,13 @@ import stdimage.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('postcard', '0005_series_publisher'),
+        ("postcard", "0005_series_publisher"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='series',
-            name='logo',
-            field=stdimage.models.StdImageField(blank=True, upload_to='img/series'),
+            model_name="series",
+            name="logo",
+            field=stdimage.models.StdImageField(blank=True, upload_to="img/series"),
         ),
     ]
