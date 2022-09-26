@@ -87,10 +87,12 @@ class OriginatorDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(OriginatorDetailView, self).get_context_data(**kwargs)
-        context["postcards"] = Postcard.objects.filter(published=True) & (
-            Postcard.objects.filter(photo_copyright__holder__id=self.object.id)
-            | Postcard.objects.filter(print_copyright__holder__id=self.object.id)
-        )
+        
+        context["postcards"] =  Postcard.objects.filter(
+          Q(photo_copyright__holder__id=self.object.id)
+          | Q(print_copyright__holder__id=self.object.id)
+          ).filter(published=True).distinct()
+
         return context
 
 
