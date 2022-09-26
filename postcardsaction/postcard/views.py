@@ -51,7 +51,6 @@ class PostcardDetailView(HitCountDetailView):
         try:
             return p[pos + 1].id
         except IndexError:
-            print("error")
             return None
 
     @property
@@ -65,9 +64,7 @@ class PostcardDetailView(HitCountDetailView):
             )
         pos = None
         for index, item in enumerate(p):
-            print(index, item)
             if item == self.object:
-                print("found")
                 pos = index
                 break
         try:
