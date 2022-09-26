@@ -10,6 +10,7 @@ pydot
 gunicorn
 Pillow
 safety
+black
 # No other database to used in production anyway ;)
 # psycopg2
 # For security
