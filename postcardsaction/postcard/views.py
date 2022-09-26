@@ -37,25 +37,43 @@ class PostcardDetailView(HitCountDetailView):
 
     @property
     def get_next_item_ID(self):
-        p = Postcard.objects.filter(published=True).order_by("-id").all()
-        if self.originator:
-            p = p.filter(
-                Q(photo_copyright__holder__id=self.originator.id)
-                | Q(print_copyright__holder__id=self.originator.id)
-            )
-        next_id = p[0:1].get().id
-        return next_id
-
-    @property
-    def get_previous_item_ID(self):
         p = Postcard.objects.filter(published=True).order_by("id").all()
         if self.originator:
             p = p.filter(
                 Q(photo_copyright__holder__id=self.originator.id)
                 | Q(print_copyright__holder__id=self.originator.id)
             )
-        prev_id = p[0:1].get().id
-        return prev_id
+        pos = None
+        for index, item in enumerate(p):
+            if item == self.object:
+                pos = index
+                break
+        try:
+            return p[pos + 1].id
+        except IndexError:
+            print("error")
+            return None
+
+    @property
+    def get_previous_item_ID(self):
+
+        p = Postcard.objects.filter(published=True).order_by("-id").all()
+        if self.originator:
+            p = p.filter(
+                Q(photo_copyright__holder__id=self.originator.id)
+                | Q(print_copyright__holder__id=self.originator.id)
+            )
+        pos = None
+        for index, item in enumerate(p):
+            print(index, item)
+            if item == self.object:
+                print("found")
+                pos = index
+                break
+        try:
+            return p[pos + 1].id
+        except IndexError:
+            return None
 
     def get_context_data(self, **kwargs):
         context = super(PostcardDetailView, self).get_context_data(**kwargs)
@@ -68,10 +86,14 @@ class PostcardDetailView(HitCountDetailView):
 
     def get_queryset(self):
         if self.originator:
-            return Postcard.objects.filter(
-                Q(photo_copyright__holder__id=self.originator.id)
-                | Q(print_copyright__holder__id=self.originator.id)
-            ).filter(published=True)
+            return (
+                Postcard.objects.filter(
+                    Q(photo_copyright__holder__id=self.originator.id)
+                    | Q(print_copyright__holder__id=self.originator.id)
+                )
+                .filter(published=True)
+                .distinct()
+            )
         else:
             return Postcard.objects.filter(published=True)
 
@@ -87,11 +109,15 @@ class OriginatorDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(OriginatorDetailView, self).get_context_data(**kwargs)
-        
-        context["postcards"] =  Postcard.objects.filter(
-          Q(photo_copyright__holder__id=self.object.id)
-          | Q(print_copyright__holder__id=self.object.id)
-          ).filter(published=True).distinct()
+
+        context["postcards"] = (
+            Postcard.objects.filter(
+                Q(photo_copyright__holder__id=self.object.id)
+                | Q(print_copyright__holder__id=self.object.id)
+            )
+            .filter(published=True)
+            .distinct()
+        )
 
         return context
 
