@@ -24,7 +24,7 @@
                             {% if object.url or object.phone or object.address %}
                             <h3>Kontakt</h3>
                             <ul>
-                                {% if object.url %}<li><strong>Homepage:</strong> <a href="{{ object.url}}">{{ object.url}}</a></li>{% endif %}
+                                {% if object.url %}<li><strong>Homepage:</strong> <a href="{{ object.url}}" target=”_blank” >{{ object.url}}</a></li>{% endif %}
                                 {% if object.phone %}<li><strong>Phone:</strong> {{object.phone}}</li>{% endif %}
                                 {% if object.address %}<li><strong>Address:</strong> {{ object.address|markdownify}}</li>{% endif %}
                             </ul>
