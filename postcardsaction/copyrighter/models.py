@@ -71,6 +71,10 @@ class Copyright(models.Model):
     )
     year = models.IntegerField(blank=True, null=True)
 
+    url = models.URLField(blank=True)
+    description = models.TextField(default="", blank=True)
+
+
     def __str__(self):
         _tmp = [self.holder.__str__()]
         if self.licence:
