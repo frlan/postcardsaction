@@ -11,14 +11,13 @@ import tagulous.models
 from django.db.models import Q
 from poi.models import POI
 
-class Tag(tagulous.models.TagTreeModel):
 
+class Tag(tagulous.models.TagTreeModel):
     class TagMeta:
         force_lowercase = False
 
 
 class URLTag(tagulous.models.TagTreeModel):
-
     class TagMeta:
         force_lowercase = False
 

@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     "hitcount",
     "django_simple_bulma",
     "django_extensions",
-    "poi"
+    "poi",
 ]
 
 MIDDLEWARE = [

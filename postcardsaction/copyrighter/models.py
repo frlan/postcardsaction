@@ -55,7 +55,6 @@ class Licence(models.Model):
 
     url = models.URLField(blank=True)
 
-
     def __str__(self):
         return self.slug
 
@@ -76,7 +75,6 @@ class Copyright(models.Model):
 
     url = models.URLField(blank=True)
     description = models.TextField(default="", blank=True)
-
 
     def __str__(self):
         _tmp = [self.holder.__str__()]
