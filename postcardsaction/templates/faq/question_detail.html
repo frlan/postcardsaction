@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}{% load markdownify %}{% load hitcount_tags %}
+
+{% block content %}
+    <div class="section">
+        <div class="container box">
+            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                    <ul>
+                            <li><a href="{% url "index" %}">Start</a></li>
+                            <li><a href="{% url "faq:index_view" %}">F.A:Q.</a></li>
+                            <li class="is-active"><a href="#" aria-current="page">{{ question.question }}</a></li>
+                    </ul>
+            </nav>
+            <div class="card">
+                <header class="card-header">
+                    <h2 class="title">{{question.question|title}}</h2>
+                </header>
+                <div class="card-content">
+                    <div class="tile is-ancestor content">
+                         {% for answer in question.answer_set.all %}
+                          <div class="content card-content is-size-5">
+                             {{answer}}
+                          </div>
+                         {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

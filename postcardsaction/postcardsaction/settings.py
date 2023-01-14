@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django_simple_bulma",
     "django_extensions",
     "poi",
+    "faq",
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,15 @@ DATABASES = {
     }
 }
 
+
+FAQ_SETTINGS = [
+    'no_answer_votes',
+    'no_category',
+    'no_category_description',
+    'no_comments',
+    'no_question_votes',
+    'no_votes',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

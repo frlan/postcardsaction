@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n %}{% load markdownify %}{% load hitcount_tags %}
+{% block head_title %} FAQ – Eine neue Frage stellen {% endblock %}
+
+{% block content %}
+    <div class="section">
+        <div class="container box">
+            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                <ul>
+                    <li class="is-active"><a href="/" aria-current="page">Home</a></li>
+                </ul>
+            </nav>
+            <div class="card">
+                <header class="card-header">
+                    <h2 class="title">FAQ – Eine Frage stellen</h2>
+                </header>
+                <div class="card-content">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label class="label">Frage</label>
+                            <div class="control">
+                                <textarea class="textarea"
+                                    placeholder="Meine Frage"
+                                    name="{{ form.question.name }}"
+                                    value="{{ form.title.value|default_if_none:'' }}"
+                                    maxlength=150
+                                    ></textarea>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <input type="submit" value="Fragen!">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

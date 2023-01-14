@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load i18n %}{% load markdownify %}{% load hitcount_tags %}
+{% block head_title %} FAQ – Übersicht {% endblock %}
+
+{% block content %}
+
+    <div class="section">
+        <div class="container box">
+            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                <ul>
+                    <li class="is-active"><a href="/" aria-current="page">Home</a></li>
+                </ul>
+            </nav>
+            <div class="card">
+                <header class="card-header">
+                    <h2 class="title">FAQ – Regelmäßige Fragen</h2>
+                </header>
+                <div class="card-content">
+                    <div class="tile is-ancestor content">
+                        <ul>
+                        {% for question in questions %}
+                            <li><a href="{% url 'faq:question_detail' question.slug %}">{{question.question}}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% if can_add_question %}
+                <div class="card-content">
+                    <div class="tile is-ancestor content">
+                        <a href="{% url 'faq:add_question' %}">Eine Frage stellen?!</a>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+            {% if page_obj.paginator.num_pages > 1 %}
+            <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="pagination-previous">Start</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-previous">Vorherige</a>
+            {% else %}
+                <a class="pagination-previous" disabled>Start</a>
+                <a class="pagination-previous" disabled>Vorherige</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination-next">Nächste</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-next">Letzte</a>
+            {% else %}
+                <a class="pagination-next" disabled>Nächste</a>
+                <a class="pagination-next" disabled>Letzte</a>
+            {% endif %}
+            </nav>
+            {% endif %} {# More than one page #}
+        </div>
+
+{% endblock %}

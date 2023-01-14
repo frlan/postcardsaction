@@ -5,14 +5,15 @@ from django.urls import include
 from django.urls import path, include, re_path
 from django.views.generic.base import TemplateView
 from postcard.views import IndexView
-from postcard.views import PostcardDetailView
 from postcard.views import LatestPostcardsFeed
 from postcard.views import OriginatorDetailView
 from postcard.views import OriginatorIndexView
+from postcard.views import PostcardDetailView
 
 
 urlpatterns = [
     re_path(r"^$", IndexView.as_view(template_name="index.html"), name="index"),
+    path('faq/', include('faq.urls')),
     re_path(r"^feed/$", LatestPostcardsFeed(), name="news_feed"),
     path("admin/", admin.site.urls),
     re_path(

@@ -11,6 +11,7 @@ gunicorn
 Pillow
 safety
 black
+django-easy-faq
 # No other database to used in production anyway ;)
 # psycopg2
 # For security
