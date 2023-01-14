@@ -19,7 +19,7 @@
                     <div class="tile is-ancestor content">
                          {% for answer in question.answer_set.all %}
                           <div class="content card-content is-size-5">
-                             {{answer|markdownify}}
+                             {{answer}}
                           </div>
                          {% endfor %}
                     </div>
