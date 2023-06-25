@@ -36,6 +36,7 @@ class URL(models.Model):
 
     class Meta:
         ordering = ["title"]
+        unique_together = [["title", "url"]]
 
 
 class Series(models.Model):
