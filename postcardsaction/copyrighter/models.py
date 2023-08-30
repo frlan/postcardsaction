@@ -1,4 +1,5 @@
 from django.db import models
+from stdimage import StdImageField
 
 
 class Holder(models.Model):
@@ -25,6 +26,17 @@ class Holder(models.Model):
     )
     description = models.TextField(
         blank=True, help_text="Free text form to tell something about the the holder"
+    )
+    logo = StdImageField(
+        upload_to="img/copyrightholder",
+        blank=True,
+        variations={
+            "large": (1024, 1024),
+            "medium": (600, 600),
+            "small": (300, 300),
+            "thumbnail": (150, 150, False),
+        },
+        delete_orphans=True,
     )
 
     def __str__(self):
