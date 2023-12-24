@@ -9,7 +9,7 @@ class Holder(models.Model):
     """
 
     name = models.CharField(
-        max_length=100, help_text="Ust it for (transcripted) writing of name."
+        max_length=100, help_text="Use it for (transcripted) writing of name."
     )
     orig_name = models.CharField(
         max_length=100,
