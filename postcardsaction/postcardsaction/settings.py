@@ -105,12 +105,12 @@ DATABASES = {
 
 
 FAQ_SETTINGS = [
-    'no_answer_votes',
-    'no_category',
-    'no_category_description',
-    'no_comments',
-    'no_question_votes',
-    'no_votes',
+    "no_answer_votes",
+    "no_category",
+    "no_category_description",
+    "no_comments",
+    "no_question_votes",
+    "no_votes",
 ]
 
 # Password validation
