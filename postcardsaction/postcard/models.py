@@ -16,6 +16,7 @@ class Tag(tagulous.models.TagTreeModel):
     class TagMeta:
         force_lowercase = False
 
+
 class URL(models.Model):
 
     title = models.CharField(
@@ -25,7 +26,7 @@ class URL(models.Model):
     url = models.URLField(
         max_length=250,
         verbose_name="URL",
-        )
+    )
 
     def __str__(self):
         return self.title
