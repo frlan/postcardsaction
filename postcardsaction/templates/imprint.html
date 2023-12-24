@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load django_simple_bulma %}
+{% bulma %}
+{% font_awesome %}
+{% block content %}
+    <div class="section">
+        <div class="container box">
+            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                    <ul>
+                            <li><a href="{% url "index" %}">Start</a></li>
+                            <li class="is-active"><a href="#" aria-current="page">Imprint</a></li>
+                    </ul>
+            </nav>
+            <div class="card">
+                <header class="card-header">
+                    <h2 class="title">Imprint</h2>
+                </header>
+                <div class="card-content">
+                    <p>Im Sinne des §5 TMG handelt es sich hier um eine rein private Homepage. </p>
+                </div>
+            </div>
+            <div class="card">
+                <header class="card-header">
+                    <h2 class="title">Datenschutz</h2>
+                </header>
+                <div class="card-content content">
+                    <p>Zum Zwecke der Fehleranalyse werden geloggt:</p>
+                    <ul>
+                        <li>IP-Adresse</li>
+                        <li>Zugriffszeit</li>
+                        <li>Verwendeter Browser (Kennung des Browsers)</li>
+                        <li>Zugegriffene Seite</li>
+                    </ul>
+                    <p>Die Daten werden nach maximal 30 Tagen gelöscht.</p>
+                </div>
+            </div>
+
+    </div>
+{% endblock %}
