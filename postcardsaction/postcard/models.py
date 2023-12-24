@@ -22,7 +22,10 @@ class URL(models.Model):
         max_length=100,
         help_text="A short description/title of the URL",
     )
-    url = models.URLField(max_length=250)
+    url = models.URLField(
+        max_length=250,
+        verbose_name="URL",
+        )
 
     def __str__(self):
         return self.title
