@@ -16,7 +16,7 @@ admin.site.register(URL)
 
 @admin.register(Postcard)
 class PostcardAdmin(admin.ModelAdmin):
-    list_display = ["title", "id", "published"]
+    list_display = ["title", "id", "published", "publishing_date"]
     search_fields = ("title",)
 
 
