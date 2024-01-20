@@ -1,12 +1,14 @@
-from .models import Postcard
+from copyrighter.models import Holder
 from django.contrib.syndication.views import Feed
+from django.db.models import Q
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils import timezone
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
 from hitcount.views import HitCountDetailView
-from copyrighter.models import Holder
-from django.db.models import Q
+from .models import Postcard
+import pytz
 
 
 class IndexView(ListView):
@@ -14,7 +16,9 @@ class IndexView(ListView):
     paginate_by = 32
 
     def get_queryset(self):
-        postcards = Postcard.objects.exclude(published="False")
+        postcards = Postcard.objects.filter(
+            published="True"
+            ).filter(publishing_date__lte=timezone.now())
         return postcards
 
     def get_context_data(self, **kwargs):

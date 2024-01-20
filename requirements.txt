@@ -12,6 +12,7 @@ Pillow
 safety
 black
 django-easy-faq
+pytz
 # No other database to used in production anyway ;)
 # psycopg2
 # For security
