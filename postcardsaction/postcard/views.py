@@ -16,9 +16,9 @@ class IndexView(ListView):
     paginate_by = 32
 
     def get_queryset(self):
-        postcards = Postcard.objects.filter(
-            published="True"
-            ).filter(publishing_date__lte=timezone.now())
+        postcards = Postcard.objects.filter(published="True").filter(
+            publishing_date__lte=timezone.now()
+        )
         return postcards
 
     def get_context_data(self, **kwargs):
@@ -59,7 +59,6 @@ class PostcardDetailView(HitCountDetailView):
 
     @property
     def get_previous_item_ID(self):
-
         p = Postcard.objects.filter(published=True).order_by("-id").all()
         if self.originator:
             p = p.filter(
@@ -130,9 +129,9 @@ class LatestPostcardsFeed(Feed):
     description_template = "feeds/postcards.html"
 
     def items(self):
-        postcards = Postcard.objects.filter(
-            published="True"
-            ).filter(publishing_date__lte=timezone.now())
+        postcards = Postcard.objects.filter(published="True").filter(
+            publishing_date__lte=timezone.now()
+        )
         return postcards
 
     def item_title(self, item):

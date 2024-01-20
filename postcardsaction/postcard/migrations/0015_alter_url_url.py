@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("postcard", "0014_remove_url_tags_delete_urltag"),
     ]

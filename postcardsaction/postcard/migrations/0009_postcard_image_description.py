@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("postcard", "0008_rename_description_text_postcard_backside_description_text"),
     ]

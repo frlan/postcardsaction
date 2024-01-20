@@ -18,7 +18,6 @@ class Tag(tagulous.models.TagTreeModel):
 
 
 class URL(models.Model):
-
     title = models.CharField(
         max_length=100,
         help_text="A short description/title of the URL",
@@ -74,7 +73,6 @@ class Country(models.Model):
 
 
 class Postcard(models.Model):
-
     title = models.CharField(
         max_length=100,
         help_text="Title of the postcard",
@@ -163,7 +161,6 @@ class Postcard(models.Model):
 
 
 class PostcardItem(models.Model):
-
     postcard = models.ForeignKey(Postcard, on_delete=models.CASCADE)
     postcrossing = models.ForeignKey(
         PCPostCard, on_delete=models.CASCADE, null=True, blank=True

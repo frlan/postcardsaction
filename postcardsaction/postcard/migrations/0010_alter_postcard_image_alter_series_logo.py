@@ -5,7 +5,6 @@ import stdimage.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("postcard", "0009_postcard_image_description"),
     ]

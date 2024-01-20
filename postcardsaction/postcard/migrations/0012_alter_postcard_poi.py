@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("poi", "0003_alter_poi_urls"),
         ("postcard", "0011_postcard_poi"),

@@ -10,7 +10,6 @@ import tagulous.models.models
 
 
 class Migration(migrations.Migration):
-
     replaces = [
         ("postcard", "0001_initial"),
         ("postcard", "0002_postcard_postcrossing"),
