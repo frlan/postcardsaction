@@ -36,6 +36,7 @@ class URL(models.Model):
         verbose_name = "URL"
         verbose_name_plural = "URLs"
 
+
 class Series(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="", blank=True)
@@ -104,7 +105,11 @@ class Postcard(models.Model):
         delete_orphans=True,
     )
 
-    poi = models.ManyToManyField(POI, blank=True)
+    poi = models.ManyToManyField(
+        POI,
+        blank=True,
+        verbose_name="POI",
+    )
 
     image_description = models.TextField(
         blank=True,
@@ -141,7 +146,12 @@ class Postcard(models.Model):
     photo_copyright = models.ManyToManyField(Copyright, related_name="photo")
     print_copyright = models.ManyToManyField(Copyright, related_name="print")
 
-    urls = models.ManyToManyField(URL, related_name="further_information", blank=True)
+    urls = models.ManyToManyField(
+        URL,
+        related_name="further_information",
+        blank=True,
+        verbose_name="URLs",
+    )
 
     published = models.BooleanField(
         default=False, help_text="Whether this postcard is visible."
