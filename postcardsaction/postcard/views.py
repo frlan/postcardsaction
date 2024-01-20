@@ -130,7 +130,10 @@ class LatestPostcardsFeed(Feed):
     description_template = "feeds/postcards.html"
 
     def items(self):
-        return Postcard.objects.exclude(published="False")
+        postcards = Postcard.objects.filter(
+            published="True"
+            ).filter(publishing_date__lte=timezone.now())
+        return postcards
 
     def item_title(self, item):
         return item.title
