@@ -33,7 +33,8 @@ class URL(models.Model):
     class Meta:
         ordering = ["title"]
         unique_together = [["title", "url"]]
-
+        verbose_name = "URL"
+        verbose_name_plural = "URLs"
 
 class Series(models.Model):
     title = models.CharField(max_length=100)
