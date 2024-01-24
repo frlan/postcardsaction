@@ -41,7 +41,7 @@ class PostcardDetailView(HitCountDetailView):
 
     @property
     def get_next_item_ID(self):
-        p = Postcard.objects.filter(published=True).order_by("id").all()
+        p = Postcard.objects.filter(published=True).filter(publishing_date__lte=timezone.now()).order_by("id").all()
         if self.originator:
             p = p.filter(
                 Q(photo_copyright__holder__id=self.originator.id)
@@ -59,7 +59,7 @@ class PostcardDetailView(HitCountDetailView):
 
     @property
     def get_previous_item_ID(self):
-        p = Postcard.objects.filter(published=True).order_by("-id").all()
+        p = Postcard.objects.filter(published=True).filter(publishing_date__lte=timezone.now()).order_by("-id").all()
         if self.originator:
             p = p.filter(
                 Q(photo_copyright__holder__id=self.originator.id)
