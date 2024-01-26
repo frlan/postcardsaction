@@ -100,7 +100,7 @@ class Postcard(models.Model):
             "large": (1024, 1024),
             "medium": (600, 600),
             "small": (300, 300),
-            "thumbnail": (150, 150, False),
+            "thumbnail": (200, 200, False),
         },
         delete_orphans=True,
     )
