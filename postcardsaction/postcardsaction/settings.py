@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "hitcount",
     "django_simple_bulma",
     "django_extensions",
+    "django_admin_logs",
     "poi",
     "faq",
 ]

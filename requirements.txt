@@ -5,6 +5,7 @@ django-simple-bulma
 django-stdimage
 django-tagulous
 django-extensions
+django-admin-logs
 pyparsing 
 pydot
 gunicorn
