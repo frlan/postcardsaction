@@ -71,7 +71,6 @@ STATICFILES_FINDERS = [
 
 # Email
 # Enable this for better for developing
-MAILER_EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = "mailer.backend.DbBackend"
 EMAIL_HOST = "localhost"
 EMAIL_USE_TLS = True
@@ -79,9 +78,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "xxx"
 EMAIL_HOST_PASSWORD = "xxx"
 DEFAULT_FROM_EMAIL = "xxx"
-MANAGERS = [
-    "foo@example.com",
-]
 
 ROOT_URLCONF = "postcardsaction.urls"
 
