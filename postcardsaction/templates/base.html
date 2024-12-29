@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
 
-    {% load django_simple_bulma %}
-    {% bulma %}
     <meta name="generator" content="postcardsaction" />
     <link rel="alternate" type="application/rss+xml" title="Postkarten Sammlung" href="{{request.scheme}}://{{request.META.HTTP_HOST}}/feed/">
     {% block metatags %}{% endblock %}
     {% block stylesheets %}{% endblock %}
+    {% load django_simple_bulma %}
+    {% bulma %}
     <title>{% block head_title %}Postkarten Sammlung{% endblock %}</title>
 
     <script>
@@ -51,6 +51,7 @@
               <a class="navbar-item" href="https://github.com/frlan/postcardsaction">GitHub</a>
               <a class="navbar-item" href="{% url "faq:index_view" %}">F.A.Q.</a>
               <a class="navbar-item" href="{% url "imprint" %}">Imprint &amp; Datenschutz</a>
+              <a class="navbar-item" href="{% url "django_contact_form" %}">Kontakt</a>
             </div>
           </div>
         </nav>

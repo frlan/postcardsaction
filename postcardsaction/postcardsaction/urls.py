@@ -13,6 +13,7 @@ from postcard.views import PostcardDetailView
 
 urlpatterns = [
     re_path(r"^$", IndexView.as_view(template_name="index.html"), name="index"),
+    path('contact/', include('django_contact_form.urls')),
     path(r'imprint', TemplateView.as_view(template_name="imprint.html"), name='imprint'),
     path("faq/", include("faq.urls")),
     re_path(r"^feed/$", LatestPostcardsFeed(), name="news_feed"),

@@ -1,0 +1,10 @@
+{% load i18n %}
+
+{% blocktrans %}
+
+There was a new contact request on {{site}}.
+
+From: {{name}} {{email}}
+Content:
+{{body}}
+{% endblocktrans %}

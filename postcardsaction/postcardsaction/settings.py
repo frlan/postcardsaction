@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.sessions",
     "django.contrib.staticfiles",
-    #    "django_markdown",
+    "django_contact_form",
     "markdownify",
     "postcard",
     "stdimage",
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "django_admin_logs",
     "poi",
     "faq",
-    "mailer"
+    "mailer",
 ]
 
 MIDDLEWARE = [
@@ -64,11 +64,23 @@ MIDDLEWARE = [
 ]
 
 STATICFILES_FINDERS = [
-    # First add the two default Finders, since this will overwrite the default.
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    # Now add our custom SimpleBulma one.
     "django_simple_bulma.finders.SimpleBulmaFinder",
+]
+
+# Email
+# Enable this for better for developing
+MAILER_EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "mailer.backend.DbBackend"
+EMAIL_HOST = "localhost"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "xxx"
+EMAIL_HOST_PASSWORD = "xxx"
+DEFAULT_FROM_EMAIL = "xxx"
+MANAGERS = [
+    "foo@example.com",
 ]
 
 ROOT_URLCONF = "postcardsaction.urls"
@@ -180,8 +192,6 @@ MARKDOWNIFY = {
 # Forcing SSL for generated URL
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 

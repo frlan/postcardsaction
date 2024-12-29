@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load django_simple_bulma %}
+{% bulma %}
+{% font_awesome %}
+{% block content %}
+    <div class="section">
+        <div class="container box">
+            <nav class="breadcrumb has-arrow-separator" aria-label="breadcrumbs">
+                    <ul>
+                            <li><a href="{% url "index" %}">Start</a></li>
+                            <li class="is-active"><a href="#" aria-current="page">Kontakt</a></li>
+                    </ul>
+            </nav>
+            <div class="card">
+                <header class="card-header">
+                    <h2 class="title">Kontakt</h2>
+                </header>
+                <div class="card-content">
+					<p>Du hast eine Frage oder eine Anregung? Einen Fehler gefunden?</p>
+					<p><br/></p>
+					<form class="ui form" method="POST">
+						{% csrf_token %}
+						<table>
+							<tbody>
+								{{ form.as_table }}
+							</tbody>
+						</table>
+						<button class="button is-info" type="submit">{% trans "Send" %}</button>
+					</form>
+                </div>
+            </div>
+    </div>
+{% endblock %}
+
+
