@@ -6,6 +6,8 @@ django-stdimage
 django-tagulous
 django-extensions
 django-admin-logs
+django-mailer>=2.3.2
+django-contact-form>=5.1.0
 pyparsing 
 pydot
 gunicorn
