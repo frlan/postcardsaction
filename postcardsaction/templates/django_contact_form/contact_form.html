@@ -18,17 +18,17 @@
                     <h2 class="title">Kontakt</h2>
                 </header>
                 <div class="card-content">
-					<p>Du hast eine Frage oder eine Anregung? Einen Fehler gefunden?</p>
-					<p><br/></p>
-					<form class="ui form" method="POST">
-						{% csrf_token %}
-						<table>
-							<tbody>
-								{{ form.as_table }}
-							</tbody>
-						</table>
-						<button class="button is-info" type="submit">{% trans "Send" %}</button>
-					</form>
+                    <p>Du hast eine Frage oder eine Anregung? Einen Fehler gefunden?</p>
+                    <p><br/></p>
+                    <form class="ui form" method="POST">
+                        {% csrf_token %}
+                        <table>
+                            <tbody>
+                                {{ form.as_table }}
+                            </tbody>
+                        </table>
+                        <button class="button is-info" type="submit">{% trans "Send" %}</button>
+                    </form>
                 </div>
             </div>
     </div>
